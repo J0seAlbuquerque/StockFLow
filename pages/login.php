@@ -9,7 +9,7 @@
 
             <!-- Seção de Login -->
             <section id="login-section" class="active">
-                <form id="login-form" method="POST" action="processa_login.php">
+                <form id="login-form" method="POST" action="../process/processa_login.php">
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" name="email" required>
 

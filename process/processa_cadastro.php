@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Criptografar a senha
     $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
-    // Processar o upload da logo, se fornecida
+    // Processar o upload da logo, opcional
     // $logo_path = null;
     // if ($logo && $logo['error'] === UPLOAD_ERR_OK) {
     //     $extensao = pathinfo($logo['name'], PATHINFO_EXTENSION);
