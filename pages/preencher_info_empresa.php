@@ -23,15 +23,11 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preencher Informações da Empresa</title>
-    <link rel="stylesheet" href="../assets/css/_prench_info.css">
+<title>Informações da Empresa</title>
+<link rel="stylesheet" href="../assets/css/_prench_i.css">
 </head>
-<body>
     <div class="container">
         <div class="box">
             <h1 class="site-name">StockFlow</h1>
@@ -89,5 +85,3 @@
             </form>
         </div>
     </div>
-</body>
-</html>

@@ -1,21 +1,29 @@
 <?php
-    require_once('../includes/config.php');
+session_start(); // Inicia a sessão
+require_once('../includes/config.php');
 
-    // Consultar produtos no banco
-    $query = "SELECT * FROM products WHERE user_id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param('i', $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// Verifica se o usuário está autenticado e obtém o user_id da sessão
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+} else {
+    die('Erro: Usuário não autenticado.');
+}
+
+// Consultar produtos no banco para o usuário autenticado
+$query = "SELECT * FROM products WHERE user_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param('i', $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
-<link rel="stylesheet" href="../assets/css/_prench_info.css">
+<link rel="stylesheet" href="../assets/css/_estoque.css">
 <div class="container">
     <div class="box">
         <h1>Estoque</h1>
 
-        <!-- Formulário de Cadastro de Produto (à esquerda) -->
-        <section id="form-section" class="left-section">
+        <!-- Formulário de Cadastro de Produto -->
+        <section id="form-section">
             <div class="form-container">
                 <h2>Cadastrar Produto</h2>
                 <form id="produto-form" method="POST" action="../process/processa_estoque.php" enctype="multipart/form-data">
@@ -48,8 +56,8 @@
             </div>
         </section>
 
-        <!-- Lista de Produtos Cadastrados (à direita) -->
-        <section id="produtos-lista" class="right-section">
+        <!-- Lista de Produtos Cadastrados -->
+        <section id="produtos-lista">
             <h2>Produtos Cadastrados</h2>
             <table>
                 <thead>
@@ -65,21 +73,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($produto = $result->fetch_assoc()): ?>
+                    <?php if ($result->num_rows > 0): ?>
+                        <?php while ($produto = $result->fetch_assoc()): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($produto['name']); ?></td>
+                                <td><?php echo htmlspecialchars($produto['code']); ?></td>
+                                <td><?php echo htmlspecialchars($produto['supplier']); ?></td>
+                                <td><?php echo htmlspecialchars($produto['category']); ?></td>
+                                <td>R$ <?php echo number_format($produto['cost_price'], 2, ',', '.'); ?></td>
+                                <td>R$ <?php echo number_format($produto['sale_price'], 2, ',', '.'); ?></td>
+                                <td><?php echo htmlspecialchars($produto['quantity']); ?></td>
+                                <td>
+                                    <a href="editar_produto.php?id=<?php echo $produto['id']; ?>">Editar</a>
+                                    <a href="../process/excluir_produto.php?delete=<?php echo $produto['product_id']; ?>">Excluir</a>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    <?php else: ?>
                         <tr>
-                            <td><?php echo $produto['name']; ?></td>
-                            <td><?php echo $produto['code']; ?></td>
-                            <td><?php echo $produto['supplier']; ?></td>
-                            <td><?php echo $produto['category']; ?></td>
-                            <td><?php echo $produto['cost_price']; ?></td>
-                            <td><?php echo $produto['sale_price']; ?></td>
-                            <td><?php echo $produto['quantity']; ?></td>
-                            <td>
-                                <a href="editar_produto.php?id=<?php echo $produto['product_id']; ?>">Editar</a>
-                                <a href="../process/processa_estoque.php?delete=<?php echo $produto['product_id']; ?>">Excluir</a>
-                            </td>
+                            <td colspan="8">Nenhum produto cadastrado.</td>
                         </tr>
-                    <?php endwhile; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </section>

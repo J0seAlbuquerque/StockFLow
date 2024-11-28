@@ -1,0 +1,111 @@
+/* Estilos gerais da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container que envolve a box */
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Caixa do formulário */
+.box {
+    background-color: #fff;
+    padding: 30px;
+    width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Título principal */
+.site-name {
+    font-size: 32px;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Título do formulário */
+h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Estilos para os labels */
+label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+/* Estilos para os inputs */
+input, select {
+    padding: 10px;
+    margin: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Input de CNPJ - sozinho na linha */
+#cnpj {
+    width: 100%;
+}
+
+/* Inputs de Endereço e Número - lado a lado */
+#endereco, #numero {
+    width: 48%;
+    display: inline-block;
+}
+
+/* Inputs de Bairro e Estado - lado a lado */
+#bairro, #estado {
+    width: 48%;
+    display: inline-block;
+}
+
+/* Input de Cidade - sozinho na linha */
+#cidade {
+    width: 100%;
+}
+
+/* Botão de envio */
+button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+/* Efeito de hover no botão */
+button:hover {
+    background-color: #031634;
+}

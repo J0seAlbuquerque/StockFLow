@@ -1,0 +1,123 @@
+/* Container principal */
+.container {
+    max-width: 1200px; /* Largura máxima */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    padding: 20px;
+}
+
+/* Box do estoque */
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espaçamento entre as seções */
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Seção de Formulário de Cadastro */
+#form-section {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    background-color: #f4f4f9;
+    padding: 20px;
+    width: 500px; /* Largura fixa do formulário */
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo dos campos do formulário */
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Seção de Lista de Produtos */
+#produtos-lista {
+    margin-top: 30px;
+    width: 100%;
+}
+
+#produtos-lista table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: left;
+}
+
+#produtos-lista th, #produtos-lista td {
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+#produtos-lista th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#produtos-lista tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#produtos-lista tr:hover {
+    background-color: #ddd;
+}
+
+#produtos-lista a {
+    color: #2196F3;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+#produtos-lista a:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 768px) {
+    .form-container {
+        width: 100%; /* O formulário ocupa toda a largura disponível */
+    }
+
+    #produtos-lista table {
+        font-size: 14px;
+    }
+
+    #produtos-lista th, #produtos-lista td {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+}
