@@ -1,0 +1,166 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e2a47; /* Dark Blue */
+    color: #f1f1f1; /* White Smoke */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50; /* Charcoal */
+    padding: 10px 20px;
+    color: #fff;
+    flex-wrap: wrap; /* Permite quebra em telas pequenas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave para sobrepor ao fundo */
+    border-bottom: 3px solid #1abc9c; /* Borda de destaque com Turquoise */
+    position: relative; /* Para garantir que ela sobreponha o fundo */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    background: linear-gradient(135deg, #2c3e50, #1e2a47); /* Gradiente suave de Charcoal para Dark Blue */
+}
+
+.navbar .logo a {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f1f1f1; /* White Smoke */
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: color 0.3s ease;
+}
+
+.navbar .logo a:hover {
+    color: #f7c56f; /* Soft Yellow */
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #a3c9e2; /* Light Blue */
+    text-decoration: none;
+    padding: 0 15px;
+    font-size: 1.1rem;
+}
+
+.nav-links a:hover {
+    color: #f7c56f; /* Soft Yellow */
+}
+
+.nav-links span {
+    color: #f1f1f1; /* White Smoke */
+    padding: 0 5px;
+}
+
+/* Dropdown */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info .empresa-name {
+    margin-right: 15px;
+    font-size: 1.1rem;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #34495e; /* Dark Blue / Charcoal suave */
+    color: #fff;
+    padding: 10px 16px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 30px; /* Bordas arredondadas suaves */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transição suave de cor e transformação */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para criar efeito de "flutuação" */
+}
+
+.dropbtn:hover {
+    background-color: #1abc9c; /* Turquoise */
+    transform: scale(1.05); /* Efeito de aumento suave */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2c3e50; /* Charcoal */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 10px; /* Bordas arredondadas para o dropdown */
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Transição suave de opacidade */
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease; /* Transição suave de cor */
+}
+
+.dropdown-content a:hover {
+    background-color: #1abc9c; /* Soft Yellow */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1; /* Torna o dropdown visível com transição suave */
+}
+
+/* Estilos para dispositivos menores (responsividade) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Muda para coluna para melhor adaptação em telas pequenas */
+        align-items: flex-start; /* Alinha os itens à esquerda */
+    }
+
+    .nav-links {
+        display: block; /* Exibe os links como blocos em dispositivos pequenos */
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 10px;
+        width: 100%; /* Faz os links ocuparem toda a largura disponível */
+        text-align: left; /* Alinha o texto à esquerda */
+    }
+
+    .user-info {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between; /* Distribui o nome da empresa e o dropdown */
+    }
+
+    .dropdown {
+        width: auto; /* Ajusta o dropdown para caber no espaço */
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo a {
+        font-size: 1.8rem; /* Reduz o tamanho da fonte do nome "StockFlow" em telas muito pequenas */
+    }
+
+    .nav-links a {
+        font-size: 1rem; /* Ajusta o tamanho da fonte dos links */
+    }
+
+    .dropbtn {
+        font-size: 0.9rem; /* Ajusta o tamanho da fonte do botão dropdown */
+    }
+}
