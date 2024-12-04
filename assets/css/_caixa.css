@@ -1,0 +1,202 @@
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2, h3 {
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Carrinho de Compras */
+#cart-section {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#cartTableBody td, #cartTableBody th {
+    text-align: center;
+}
+
+#total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Pop-up de Pagamento */
+#paymentPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#paymentPopup h2, #paymentPopup h3 {
+    margin-top: 0;
+}
+
+#closePopup {
+    margin-top: 20px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+
+.popup-content {
+    position: relative;
+    background-color: white;
+    width: 60%;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup h2 {
+    text-align: center;
+}
+
+.popup-table th, .popup-table td {
+    padding: 10px;
+    text-align: left;
+}
+
+.popup-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#popupTotal {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Opções de Pagamento */
+#paymentMethod {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+#creditCardOptions {
+    margin-top: 20px;
+}
+
+#installments {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+#installmentValue {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Botões de Fechar e Confirmar */
+.close-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: #e53935;
+}
+
+.close-btn:active {
+    background-color: #c62828;
+}
+
+/* Adicionar Estilo de Responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .popup-content {
+        width: 80%;
+    }
+
+    table, .popup-table {
+        font-size: 14px;
+    }
+
+    button, .close-btn {
+        padding: 8px 16px;
+    }
+}
