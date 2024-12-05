@@ -28,7 +28,7 @@ $user_id = $_SESSION['user_id'];
         <h2>Produtos Disponíveis</h2>
         <table id="productsList">
             <thead>
-                <tr>
+                <tr> 
                     <th>Nome</th>
                     <th>Código</th>
                     <th>Preço Unitário</th>
@@ -63,35 +63,46 @@ $user_id = $_SESSION['user_id'];
         <button id="proceedToPayment">Prosseguir para Pagamento</button>
     </section>
 
-    <!-- Popup de Pagamento -->
-    <div id="paymentPopup" style="display:none;">
-        <h2>Resumo da Compra</h2>
-        <table id="popupCartSummary">
-            <!-- Resumo do carrinho será exibido aqui -->
-        </table>
-        <div id="popupTotalAmount">Total: R$ 0,00</div>
-
-        <h3>Forma de Pagamento</h3>
-        <select id="paymentMethod">
-            <option value="cash">Dinheiro</option>
-            <option value="pix">Pix</option>
-            <option value="debit_card">Cartão de Débito</option>
-            <option value="credit_card">Cartão de Crédito</option>
-        </select>
-
-        <div id="creditCardOptions" style="display:none;">
-            <label for="installments">Parcelas:</label>
-            <select id="installments">
-                <option value="1">1x</option>
-                <option value="2">2x</option>
-                <option value="3">3x</option>
-                <option value="4">4x</option>
+    <!-- Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Resumo do Pedido</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Qtd</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                <tbody id="cartSummaryModal">
+                    <!-- Itens do carrinho serão exibidos aqui -->
+                </tbody>
+            </table>
+            <div id="totalAmountModal">Total: R$ 0,00</div>
+            <label for="paymentMethod">Forma de Pagamento:</label>
+            <select id="paymentMethod">
+                <option value="dinheiro">Dinheiro</option>
+                <option value="pix">Pix</option>
+                <option value="debito">Cartão de Débito</option>
+                <option value="credito">Cartão de Crédito</option>
             </select>
+            <div id="creditCardOptions" style="display: none;">
+                <label for="installments">Parcelas:</label>
+                <select id="installments">
+                    <option value="1">1x</option>
+                    <option value="2">2x</option>
+                    <option value="3">3x</option>
+                    <option value="4">4x</option>
+                    <option value="5">5x</option>
+                    <option value="6">6x</option>
+                </select>
+                <div id="installmentValue">Valor da Parcela: R$ 0,00</div>
+            </div>
+            <button id="confirmPayment">Confirmar Pagamento</button>
         </div>
-        <button id="closePopup">Fechar</button>
     </div>
-
-</div>
 
 <script src="../assets/js/_caixa.js"></script>
 

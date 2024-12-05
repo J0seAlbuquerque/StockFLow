@@ -1,28 +1,119 @@
 document.addEventListener("DOMContentLoaded", function () {
     const cart = [];
     const cartTableBody = document.querySelector('#cartSummary tbody');
+    const cartTableBodyModal = document.querySelector('#cartSummaryModal');
     const totalAmount = document.getElementById('totalAmount');
     const paymentMethodSelect = document.getElementById("paymentMethod");
     const creditCardInstallments = document.getElementById("installments");
     const installmentValueDisplay = document.getElementById("installmentValue");
     const creditCardOptions = document.getElementById("creditCardOptions");
 
+    // Modal elements
+    const paymentModal = document.getElementById("paymentModal");
     const proceedToPaymentButton = document.getElementById("proceedToPayment");
+    const closeModalButton = document.querySelector(".close");
+    const totalAmountModal = document.getElementById("totalAmountModal");
 
-    if (proceedToPaymentButton) {
-        proceedToPaymentButton.addEventListener('click', function() {
-            document.getElementById('paymentPopup').style.display = 'block';
+    proceedToPaymentButton.addEventListener("click", function() {
+        updateCartTable();
+        paymentModal.style.display = "block";
+    });
+
+    closeModalButton.addEventListener("click", function() {
+        paymentModal.style.display = "none";
+    });
+
+    window.addEventListener("click", function(event) {
+        if (event.target == paymentModal) {
+            paymentModal.style.display = "none";
+        }
+    });
+
+    paymentMethodSelect.addEventListener("change", function() {
+        if (this.value === "credito") {
+            creditCardOptions.style.display = "block";
+        } else {
+            creditCardOptions.style.display = "none";
+        }
+        updateInstallmentValue();
+    });
+
+    creditCardInstallments.addEventListener("change", updateInstallmentValue);
+
+    function updateInstallmentValue() {
+        const total = parseFloat(totalAmountModal.textContent.replace('Total: R$ ', '').replace(',', '.'));
+        const installments = parseInt(creditCardInstallments.value);
+        const installmentValue = total / installments;
+        installmentValueDisplay.textContent = `Valor da Parcela: R$ ${installmentValue.toFixed(2).replace('.', ',')}`;
+    }
+
+    function updateCartTable() {
+        cartTableBody.innerHTML = '';
+        cartTableBodyModal.innerHTML = '';
+        let total = 0;
+
+        cart.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.quantity}</td>
+                <td>R$ ${item.price.toFixed(2).replace('.', ',')}</td>
+                <td>R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</td>
+                <td>
+                    <button class="remove-from-cart" data-id="${item.id}">-</button>
+                    <button class="remove-all-from-cart" data-id="${item.id}">Remover Tudo</button>
+                </td>
+            `;
+            cartTableBody.appendChild(row);
+
+            const rowModal = document.createElement('tr');
+            rowModal.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.quantity}</td>
+                <td>R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</td>
+            `;
+            cartTableBodyModal.appendChild(rowModal);
+
+            total += item.price * item.quantity;
+        });
+
+        totalAmount.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+        totalAmountModal.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+        updateInstallmentValue();
+
+        // Adiciona evento de clique para remover uma unidade do carrinho
+        document.querySelectorAll('.remove-from-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-id');
+                const productIndex = cart.findIndex(item => item.id === productId);
+
+                if (productIndex > -1) {
+                    cart[productIndex].quantity -= 1;
+                    if (cart[productIndex].quantity === 0) {
+                        cart.splice(productIndex, 1);
+                    }
+                }
+
+                updateCartTable();
+            });
+        });
+
+        // Adiciona evento de clique para remover todas as unidades do carrinho
+        document.querySelectorAll('.remove-all-from-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-id');
+                const productIndex = cart.findIndex(item => item.id === productId);
+
+                if (productIndex > -1) {
+                    cart.splice(productIndex, 1);
+                }
+
+                updateCartTable();
+            });
         });
     }
 
-    const closePopupButton = document.getElementById('closePopup');
-    if (closePopupButton) {
-        closePopupButton.addEventListener('click', function() {
-            document.getElementById('paymentPopup').style.display = 'none';
-        });
-    }
-
-    // Buscar os produtos do banco de dados quando a página carregar
+    // Fetch products and handle cart operations
     fetch('../api/get_products.php')
         .then(response => {
             if (!response.ok) {
@@ -71,42 +162,4 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         })
         .catch(error => console.error('Erro ao carregar produtos:', error));
-
-    function updateCartTable() {
-        cartTableBody.innerHTML = '';
-        let total = 0;
-
-        cart.forEach(item => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${item.name}</td>
-                <td>${item.quantity}</td>
-                <td>R$ ${item.price.toFixed(2).replace('.', ',')}</td>
-                <td>R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</td>
-                <td><button class="remove-from-cart" data-id="${item.id}">-</button></td>
-            `;
-            cartTableBody.appendChild(row);
-
-            total += item.price * item.quantity;
-        });
-
-        totalAmount.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
-
-        // Adiciona evento de clique para remover itens do carrinho
-        document.querySelectorAll('.remove-from-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const productId = this.getAttribute('data-id');
-                const productIndex = cart.findIndex(item => item.id === productId);
-
-                if (productIndex > -1) {
-                    cart[productIndex].quantity -= 1;
-                    if (cart[productIndex].quantity === 0) {
-                        cart.splice(productIndex, 1);
-                    }
-                }
-
-                updateCartTable();
-            });
-        });
-    }
 });
