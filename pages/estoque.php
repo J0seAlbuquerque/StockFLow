@@ -17,7 +17,48 @@ $stmt->execute();
 $result = $stmt->get_result();
 ?>
 
-<link rel="stylesheet" href="../assets/css/_estoque.css">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque - Sistema de Vendas</title>
+    <link rel="stylesheet" href="../assets/css/_estoque.css">
+</head>
+<body>
+    <!-- Barra de navegação -->
+    <header>
+        <nav class="navbar">
+            <!-- Nome do sistema no canto esquerdo -->
+            <div class="logo">
+                <a href="./homepage.php" class="navbar-brand">StockFlow</a>
+            </div>
+            
+            <!-- Links de navegação -->
+            <div class="nav-links">
+                <a href="./homepage.php">Home</a>
+                <span>|</span>
+                <a href="../pages/caixa.php">Caixa</a>
+                <span>|</span>
+                <a href="../pages/estoque.php">Estoque</a>
+                <span>|</span>
+                <a href="../pages/">Vendas</a>
+            </div>
+            
+            <!-- Nome da empresa logada com o dropdown -->
+            <div class="user-info">
+                <span class="empresa-name"><?php echo $nomeEmpresa; ?></span>
+                <div class="dropdown">
+                    <button class="dropbtn">Mais +</button>
+                    <div class="dropdown-content">
+                        <a href="../pages/preencher_info_empresa.php">Editar Dados</a>
+                        <a href="../pages/login.php">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
 <div class="container">
     <div class="box">
         <h1>Estoque</h1>
@@ -103,3 +144,5 @@ $result = $stmt->get_result();
 <?php
     include('../includes/footer.php');
 ?>
+</body>
+</html>
