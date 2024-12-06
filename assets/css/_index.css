@@ -1,0 +1,107 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50; /* Charcoal */
+    padding: 10px 20px;
+    color: #fff;
+    flex-wrap: wrap; /* Permite quebra em telas pequenas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave para sobrepor ao fundo */
+    border-bottom: 3px solid #1abc9c; /* Borda de destaque com Turquoise */
+    position: fixed; /* Fixa a navbar no topo */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa toda a largura da tela */
+    z-index: 1000; /* Garante que ela fique acima de outros elementos */
+    background: linear-gradient(135deg, #2c3e50, #1e2a47); /* Gradiente suave de Charcoal para Dark Blue */
+    margin: 0; /* Garante que a navbar encoste nas bordas da tela */
+}
+
+/* Logo */
+.navbar .logo a {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f1f1f1; /* White Smoke */
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: color 0.3s ease;
+}
+
+.navbar .logo a:hover {
+    color: #f7c56f; /* Soft Yellow */
+}
+
+/* Links de navegação */
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style-type: none; /* Remove os pontos da lista */
+    padding-left: 0; /* Remove o espaçamento à esquerda da lista */
+}
+
+/* Item de lista na navbar */
+.nav-links li {
+    margin-right: 20px; /* Espaço entre os links */
+}
+
+/* Links de navegação */
+.nav-links a {
+    color: #a3c9e2; /* Light Blue */
+    text-decoration: none;
+    padding: 0 15px;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #f7c56f; /* Soft Yellow */
+}
+
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Organiza os itens da navbar em uma coluna */
+        align-items: center; /* Centraliza os itens */
+    }
+
+    .nav-links {
+        margin-top: 10px;
+        flex-direction: column; /* Organiza os links em uma coluna */
+    }
+
+    .nav-links a {
+        padding: 10px 0; /* Adiciona mais espaçamento nos links */
+    }
+}
+
+/* Ajuste do corpo para garantir que o conteúdo não fique abaixo da navbar fixa */
+body {
+    padding-top: 80px; /* Garante que o conteúdo não se sobreponha à navbar */
+}
+
+/* Estilo das seções */
+.section {
+    padding: 40px;
+    margin-bottom: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Estilo do texto */
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+}
