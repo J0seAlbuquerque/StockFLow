@@ -1,3 +1,11 @@
+/* Reset básico para garantir compatibilidade entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 /* Container principal */
 .container {
     max-width: 1200px; /* Largura máxima */
@@ -10,36 +18,35 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2c3e50; /* Charcoal */
+    background: linear-gradient(135deg, #2c3e50, #1e2a47); /* Gradiente suave */
     padding: 10px 20px;
     color: #fff;
-    flex-wrap: wrap; /* Permite quebra em telas pequenas */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave para sobrepor ao fundo */
-    border-bottom: 3px solid #1abc9c; /* Borda de destaque com Turquoise */
-    position: fixed; /* Fixa a barra no topo */
-    top: 0; /* Encosta no topo */
-    left: 0; /* Encosta na lateral esquerda */
-    right: 0; /* Encosta na lateral direita */
-    z-index: 1000; /* Garante que fique acima de outros elementos */
-    background: linear-gradient(135deg, #2c3e50, #1e2a47); /* Gradiente suave de Charcoal para Dark Blue */
+    flex-wrap: wrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 3px solid #1abc9c; /* Destaque */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 body {
-    padding-top: 60px; /* Ajuste conforme a altura da navbar */
+    padding-top: 60px; /* Espaço para a navbar fixa */
     background-color: #1e2a47;
 }
 
 .navbar .logo a {
     font-size: 2rem;
     font-weight: bold;
-    color: #f1f1f1; /* White Smoke */
+    color: #f1f1f1;
     text-decoration: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: color 0.3s ease;
 }
 
 .navbar .logo a:hover {
-    color: #f7c56f; /* Soft Yellow */
+    color: #f7c56f; /* Destaque ao passar o mouse */
 }
 
 .nav-links {
@@ -48,19 +55,14 @@ body {
 }
 
 .nav-links a {
-    color: #a3c9e2; /* Light Blue */
+    color: #a3c9e2;
     text-decoration: none;
     padding: 0 15px;
     font-size: 1.1rem;
 }
 
 .nav-links a:hover {
-    color: #f7c56f; /* Soft Yellow */
-}
-
-.nav-links span {
-    color: #f1f1f1; /* White Smoke */
-    padding: 0 5px;
+    color: #f7c56f;
 }
 
 /* Dropdown */
@@ -80,33 +82,32 @@ body {
 }
 
 .dropbtn {
-    background-color: #34495e; /* Dark Blue / Charcoal suave */
+    background-color: #34495e;
     color: #fff;
     padding: 10px 16px;
     font-size: 1rem;
     border: none;
     cursor: pointer;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-radius: 30px; /* Bordas arredondadas suaves */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transição suave de cor e transformação */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para criar efeito de "flutuação" */
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .dropbtn:hover {
-    background-color: #1abc9c; /* Turquoise */
-    transform: scale(1.05); /* Efeito de aumento suave */
+    background-color: #1abc9c;
+    transform: scale(1.05);
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #2c3e50; /* Charcoal */
+    background-color: #2c3e50;
     min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    border-radius: 10px; /* Bordas arredondadas para o dropdown */
+    border-radius: 10px;
     opacity: 0;
-    transition: opacity 0.3s ease; /* Transição suave de opacidade */
+    transition: opacity 0.3s ease;
 }
 
 .dropdown-content a {
@@ -114,23 +115,23 @@ body {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    transition: background-color 0.3s ease; /* Transição suave de cor */
+    transition: background-color 0.3s ease;
 }
 
 .dropdown-content a:hover {
-    background-color: #1abc9c; /* Soft Yellow */
+    background-color: #1abc9c;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
-    opacity: 1; /* Torna o dropdown visível com transição suave */
+    opacity: 1;
 }
 
 /* Box do estoque */
 .box {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Espaçamento entre as seções */
+    gap: 30px;
 }
 
 /* Título principal */
@@ -141,7 +142,7 @@ h1 {
     color: white;
 }
 
-/* Seção de Formulário de Cadastro */
+/* Formulário de Cadastro */
 #form-section {
     display: flex;
     justify-content: center;
@@ -150,24 +151,39 @@ h1 {
 .form-container {
     background-color: #f4f4f9;
     padding: 20px;
-    width: 500px; /* Largura fixa do formulário */
+    width: 500px;
     border-radius: 10px;
     border: 1px solid #ddd;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* Estilo dos campos do formulário */
+form .form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
 form label {
-    display: block;
-    margin: 10px 0 5px;
+    flex: 0 0 35%;
+    text-align: right;
+    font-weight: bold;
 }
 
-form input {
-    width: 100%;
+form input, form select {
+    flex: 1;
     padding: 10px;
-    margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #ddd;
+    transition: border-color 0.3s;
+}
+
+form input:focus {
+    border-color: #1abc9c;
+    outline: none;
 }
 
 form button {
@@ -178,14 +194,15 @@ form button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
 form button:hover {
-    background-color: #1abc9c;
-    color: #1e2a47;
+    background-color: #16a085;
 }
 
-/* Seção de Lista de Produtos */
+/* Lista de Produtos */
 #produtos-lista {
     margin-top: 30px;
     width: 100%;
@@ -226,21 +243,99 @@ form button:hover {
     text-decoration: underline;
 }
 
-/* Ajustes para telas pequenas */
+/* Pop-up */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(calc(-50% + 30px), calc(-50% + 30px));
+    width: 40%;
+    max-width: 500px;
+    max-height: 80%;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 1000;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.popup h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+.popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.popup .close-btn:hover {
+    color: #e74c3c;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+
+/* Botão para abrir o pop-up */
+#open-popup-btn {
+    background-color: #1abc9c;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#open-popup-btn:hover {
+    background-color: #16a085;
+}
+
+/* Formulário em grade dentro do pop-up */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-grid div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
     .form-container {
-        width: 100%; /* O formulário ocupa toda a largura disponível */
+        width: 100%;
     }
 
     #produtos-lista table {
         font-size: 14px;
     }
 
-    #produtos-lista th, #produtos-lista td {
-        padding: 10px;
-    }
-
     h1 {
-        font-size: 2em;
+        font-size: 2rem;
     }
 }

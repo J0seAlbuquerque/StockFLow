@@ -63,39 +63,44 @@ $result = $stmt->get_result();
     <div class="box">
         <h1>Estoque</h1>
 
-        <!-- Formulário de Cadastro de Produto -->
-        <section id="form-section">
-            <div class="form-container">
-                <h2>Cadastrar Produto</h2>
-                <form id="produto-form" method="POST" action="../process/processa_estoque.php" enctype="multipart/form-data">
-                    <label for="nome">Nome do Produto:</label>
-                    <input type="text" id="nome" name="nome" required>
+        <!-- Botão para abrir o pop-up -->
+        <button id="open-popup-btn">Cadastrar Produto</button>
 
-                    <label for="codigo">Código:</label>
-                    <input type="text" id="codigo" name="codigo" required>
+        <!-- Pop-up de Cadastro de Produto -->
+<div class="popup-overlay" id="popup-overlay"></div>
+<div class="popup" id="popup">
+    <span class="close-btn" id="close-popup-btn">&times;</span>
+    <h2>Cadastrar Produto</h2>
+    <form id="produto-form" method="POST" action="../process/processa_estoque.php" enctype="multipart/form-data">
+        
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
 
-                    <label for="fornecedor">Fornecedor:</label>
-                    <input type="text" id="fornecedor" name="fornecedor">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" required>
 
-                    <label for="categoria">Categoria:</label>
-                    <input type="text" id="categoria" name="categoria">
+        <label for="fornecedor">Fornecedor:</label>
+        <input type="text" id="fornecedor" name="fornecedor">
 
-                    <label for="preco_custo">Preço de Custo:</label>
-                    <input type="number" step="0.01" id="preco_custo" name="preco_custo" required>
+        <label for="categoria">Categoria:</label>
+        <input type="text" id="categoria" name="categoria">
 
-                    <label for="preco_venda">Preço de Venda:</label>
-                    <input type="number" step="0.01" id="preco_venda" name="preco_venda" required>
+        <label for="preco_custo">Preço de Custo:</label>
+        <input type="number" step="0.01" id="preco_custo" name="preco_custo" required>
 
-                    <label for="quantidade">Quantidade em Estoque:</label>
-                    <input type="number" id="quantidade" name="quantidade" required>
+        <label for="preco_venda">Preço de Venda:</label>
+        <input type="number" step="0.01" id="preco_venda" name="preco_venda" required>
 
-                    <label for="vencimento">Data de Vencimento:</label>
-                    <input type="date" id="vencimento" name="vencimento">
+        <label for="quantidade">Quantidade em Estoque:</label>
+        <input type="number" id="quantidade" name="quantidade" required>
 
-                    <button type="submit">Cadastrar Produto</button>
-                </form>
-            </div>
-        </section>
+        <label for="vencimento">Data de Vencimento:</label>
+        <input type="date" id="vencimento" name="vencimento">
+
+        <button type="submit">Cadastrar Produto</button>
+    </form>
+</div>
+
 
         <!-- Lista de Produtos Cadastrados -->
         <section id="produtos-lista">
@@ -140,6 +145,7 @@ $result = $stmt->get_result();
         </section>
     </div>
 </div>
+<script src="../assets/js/_estoque.js"></script>
 
 <?php
     include('../includes/footer.php');
