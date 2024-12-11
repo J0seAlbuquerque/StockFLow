@@ -67,39 +67,46 @@ $result = $stmt->get_result();
         <button id="open-popup-btn">Cadastrar Produto</button>
 
         <!-- Pop-up de Cadastro de Produto -->
-<div class="popup-overlay" id="popup-overlay"></div>
-<div class="popup" id="popup">
-    <span class="close-btn" id="close-popup-btn">&times;</span>
-    <h2>Cadastrar Produto</h2>
-    <form id="produto-form" method="POST" action="../process/processa_estoque.php" enctype="multipart/form-data">
-        
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
-
-        <label for="codigo">Código:</label>
-        <input type="text" id="codigo" name="codigo" required>
-
-        <label for="fornecedor">Fornecedor:</label>
-        <input type="text" id="fornecedor" name="fornecedor">
-
-        <label for="categoria">Categoria:</label>
-        <input type="text" id="categoria" name="categoria">
-
-        <label for="preco_custo">Preço de Custo:</label>
-        <input type="number" step="0.01" id="preco_custo" name="preco_custo" required>
-
-        <label for="preco_venda">Preço de Venda:</label>
-        <input type="number" step="0.01" id="preco_venda" name="preco_venda" required>
-
-        <label for="quantidade">Quantidade em Estoque:</label>
-        <input type="number" id="quantidade" name="quantidade" required>
-
-        <label for="vencimento">Data de Vencimento:</label>
-        <input type="date" id="vencimento" name="vencimento">
-
-        <button type="submit">Cadastrar Produto</button>
-    </form>
-</div>
+        <div class="popup-overlay" id="popup-overlay"></div>
+        <div class="popup" id="popup">
+            <span class="close-btn" id="close-popup-btn">&times;</span>
+            <h2>Cadastrar Produto</h2>
+            <form id="produto-form" method="POST" action="../process/processa_estoque.php" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="codigo">Código:</label>
+                    <input type="text" id="codigo" name="codigo" required>
+                </div>
+                <div class="form-group">
+                    <label for="fornecedor">Fornecedor:</label>
+                    <input type="text" id="fornecedor" name="fornecedor">
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria:</label>
+                    <input type="text" id="categoria" name="categoria">
+                </div>
+                <div class="form-group">
+                    <label for="preco_custo">Preço de Custo:</label>
+                    <input type="number" step="0.01" id="preco_custo" name="preco_custo" required>
+                </div>
+                <div class="form-group">
+                    <label for="preco_venda">Preço de Venda:</label>
+                    <input type="number" step="0.01" id="preco_venda" name="preco_venda" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantidade">Quantidade em Estoque:</label>
+                    <input type="number" id="quantidade" name="quantidade" required>
+                </div>
+                <div class="form-group">
+                    <label for="vencimento">Data de Vencimento:</label>
+                    <input type="date" id="vencimento" name="vencimento">
+                </div>
+                <button type="submit">Cadastrar Produto</button>
+            </form>
+        </div>
 
 
         <!-- Lista de Produtos Cadastrados -->

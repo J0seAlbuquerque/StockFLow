@@ -55,45 +55,52 @@ $user_id = $_SESSION['user_id'];
 <div class="container">
     <h1>Caixa - Realizar Venda</h1>
 
-    <!-- Lista de Produtos -->
-    <section id="products-section">
-        <h2>Produtos Disponíveis</h2>
-        <table id="productsList">
-            <thead>
-                <tr> 
-                    <th>Nome</th>
-                    <th>Código</th>
-                    <th>Preço Unitário</th>
-                    <th>Estoque</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Produtos serão carregados aqui -->
-            </tbody>
-        </table>
-    </section>
+    <div class="sections-wrapper">
+        <!-- Lista de Produtos -->
+        <section id="products-section">
+            <h2>Produtos Disponíveis</h2>
+            <input type="text" id="searchBar" placeholder="Pesquisar por nome ou código..." class="search-bar">
+            <table id="productsList">
+                <thead>
+                    <tr> 
+                        <th>Nome</th>
+                        <th>Código</th>
+                        <th>Categoria</th> <!-- Nova coluna Categoria -->
+                        <th>Preço Unitário</th>
+                        <th>Estoque</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Produtos serão carregados aqui -->
+                </tbody>
+            </table>
+        </section>
 
-    <!-- Carrinho -->
-    <section id="cart-section">
-        <h2>Carrinho de Compras</h2>
-        <table id="cartSummary">
-            <thead>
-                <tr>
-                    <th>Produto</th>
-                    <th>Quantidade</th>
-                    <th>Preço Unitário</th>
-                    <th>Total</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Itens do carrinho serão exibidos aqui -->
-            </tbody>
-        </table>
-        <div id="totalAmount">Total: R$ 0,00</div>
-        <button id="proceedToPayment">Prosseguir para Pagamento</button>
-    </section>
+        <!-- Carrinho -->
+        <div class="cart-wrapper">
+            <h2>Carrinho de Compras</h2>
+            <section id="cart-section">
+                <table id="cartSummary">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Qtd</th>
+                            <th>Uni</th>
+                            <th>Total</th>
+                            <th>Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Itens do carrinho serão exibidos aqui -->
+                    </tbody>
+                </table>
+                <div id="totalAmount">Total: R$ 0,00</div>
+                <button id="proceedToPayment">Prosseguir para Pagamento</button>
+            </section>
+        </div>
+    </div>
+</div>
 
     <!-- Modal -->
     <div id="paymentModal" class="modal">
@@ -112,7 +119,6 @@ $user_id = $_SESSION['user_id'];
                     <!-- Itens do carrinho serão exibidos aqui -->
                 </tbody>
             </table>
-            <div id="totalAmountModal">Total: R$ 0,00</div>
             <label for="paymentMethod">Forma de Pagamento:</label>
             <select id="paymentMethod">
                 <option value="dinheiro">Dinheiro</option>
@@ -132,6 +138,7 @@ $user_id = $_SESSION['user_id'];
                 </select>
                 <div id="installmentValue">Valor da Parcela: R$ 0,00</div>
             </div>
+            <div id="totalAmountModal">Total: R$ 0,00</div>
             <button id="confirmPayment">Confirmar Pagamento</button>
         </div>
     </div>

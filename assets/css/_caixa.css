@@ -8,10 +8,58 @@ body {
     background: linear-gradient(135deg, #2c3e50, #1e2a47);
 }
 
+/* Container principal */
 .container {
+    display: flex;
+    flex-direction: column; /* Alinha os itens em coluna */
+    margin-top: 20px;
     width: 80%;
     margin: 0 auto; 
     padding: 20px;
+}
+
+.sections-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Seção de produtos */
+#products-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+/* Wrapper do carrinho */
+.cart-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Seção do carrinho */
+#cart-section {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px; /* Aumenta o padding */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1em; /* Aumenta o tamanho da fonte */
+    margin-top: 10px;
+}
+
+#cartSummary th, #cartSummary td {
+    padding: 10px; /* Aumenta o padding das células */
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+#totalAmount {
+    font-size: 1.2em; /* Aumenta o tamanho da fonte */
+    font-weight: bold; /* Aplica negrito */
+    margin-top: 10px; /* Ajusta a margem superior */
+    margin-bottom: 10px; /* Ajusta a margem inferior */
+    text-align: left; /* Alinha o texto à esquerda */
 }
 
 /* Navbar */
@@ -141,8 +189,11 @@ h2, h3 {
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 8px 16px; /* Ajusta o padding dos botões */
+    font-size: 0.9em; /* Ajusta o tamanho da fonte */
     background-color: #1abc9c;
     color: white;
     border: none;
@@ -152,7 +203,7 @@ button {
 }
 
 button:hover {
-    background-color: #1abc9c;
+    background-color: #16a085;
 }
 
 button:active {
@@ -166,10 +217,11 @@ table {
     border-collapse: collapse;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 0.9em; /* Ajusta o tamanho da fonte */
 }
 
 th, td {
-    padding: 10px;
+    padding: 8px; /* Ajusta o padding das células */
     border: 1px solid #ddd;
     text-align: left;
 }
@@ -179,13 +231,6 @@ th {
 }
 
 /* Carrinho de Compras */
-#cart-section {
-    margin-top: 40px;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
 #cartTableBody td, #cartTableBody th {
     text-align: center;
 }
@@ -195,38 +240,77 @@ th {
     font-weight: bold; /* Aplica negrito */
     margin-top: 40px; /* Adiciona espaçamento acima */
     margin-bottom: 40px; /* Adiciona espaçamento abaixo */
-    text-align: center; /* Centraliza o texto */
 }
 
 /* Total Amount */
 #totalAmount {
-    font-size: 28px; /* Aumenta o tamanho da fonte */
+    font-size: 1.2em; /* Aumenta o tamanho da fonte */
     font-weight: bold; /* Aplica negrito */
-    margin-top: 20px; /* Adiciona espaçamento acima */
-    margin-bottom: 20px; /* Adiciona espaçamento abaixo */
-    text-align: center; /* Centraliza o texto */
+    margin-top: 10px; /* Ajusta a margem superior */
+    margin-bottom: 10px; /* Ajusta a margem inferior */
+    text-align: left; /* Alinha o texto à esquerda */
 }
 
 /* Modal */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.4); 
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top, higher than navbar */
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+    transform: translate(-50%, -50%); /* Adjust position to be centered */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 10% auto; 
+    margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 300px; /* Ajuste a largura para parecer um recibo */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50%; /* Reduce width */
+    max-width: 500px; /* Ajusta a largura máxima do modal */
+    font-size: 0.9em; /* Ajusta o tamanho da fonte */
+    position: relative; /* Ensure it stays within the modal */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust position to be centered */
+}
+
+.modal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em; /* Ajusta o tamanho da fonte */
+    margin-bottom: 20px; /* Adiciona espaço abaixo da tabela */
+}
+
+.modal-content th, .modal-content td {
+    padding: 8px; /* Ajusta o padding das células da tabela */
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#totalAmountModal, #installmentValue {
+    font-size: 1em; /* Ajusta o tamanho da fonte */
+    font-weight: bold; /* Aplica negrito */
+    margin-top: 10px; /* Ajusta a margem superior */
+    margin-bottom: 10px; /* Ajusta a margem inferior */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+#paymentMethod, #installments, #totalAmountModal, #installmentValue {
+    display: block;
+    margin-bottom: 10px; /* Ajusta o espaço entre os elementos */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+#creditCardOptions {
+    margin-bottom: 10px; /* Ajusta o espaço abaixo das opções de cartão de crédito */
+}
+
+#confirmPayment {
+    margin-top: 20px; /* Adiciona espaço acima do botão de confirmar pagamento */
 }
 
 .close {
@@ -245,12 +329,12 @@ th {
 
 /* Estilo da tabela no modal */
 .modal-content table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
 }
 
 .modal-content th, .modal-content td {
-    padding: 5px;
+    padding: 2px; /* Ajusta o padding das células da tabela */
     border: 1px solid #ddd;
     text-align: left;
 }
@@ -259,10 +343,61 @@ th {
     background-color: #f2f2f2;
 }
 
-#totalAmountModal, #installmentValue {
-    font-size: 18px; /* Ajuste o tamanho da fonte */
+#totalAmountModal {
+    font-size: 19px; /* Aumenta o tamanho da fonte */
+    font-weight: bold; /* Aplica negrito */
+    margin-top: 20px; /* Adiciona espaçamento acima */
+    margin-bottom: 20px; /* Adiciona espaçamento abaixo */
+}
+
+
+#installmentValue {
+    font-size: 16px; /* Ajuste o tamanho da fonte */
     font-weight: bold; /* Aplica negrito */
     margin-top: 10px; /* Adiciona espaçamento acima */
     margin-bottom: 10px; /* Adiciona espaçamento abaixo */
-    text-align: center; /* Centraliza o texto */
+}
+
+.modal-content h2 {
+    margin-bottom: 20px; /* Add space below the heading */
+}
+
+#paymentMethod {
+    border: #1e2a47;
+    border-radius: 12px;
+    padding: 10px;
+    background-color: #1abc9c;
+    color: white;
+    margin-bottom: 20px; /* Add space below the payment method dropdown */
+}
+
+#installments {
+    border: #1e2a47;
+    border-radius: 12px;
+    padding: 10px;
+    background-color: #1abc9c;
+    color: white;
+}
+
+#creditCardOptions {
+    margin-bottom: 20px; /* Add space below the credit card options */
+}
+
+#confirmPayment {
+    margin-top: 20px; /* Add space above the confirm payment button */
+}
+
+/* Ajustes de Tamanho para os Elementos da Página */
+
+/* Ajusta o tamanho dos selects */
+select {
+    padding: 5px; /* Ajusta o padding dos selects */
+    font-size: 0.9em; /* Ajusta o tamanho da fonte */
+}
+
+/* Barra de Pesquisa */
+.search-bar {
+    width: 50%; /* Diminui a largura da barra de pesquisa */
+    padding: 10px;
+    margin-bottom: 10px; /* Diminui a margem inferior */
 }

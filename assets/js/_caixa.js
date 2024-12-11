@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const creditCardInstallments = document.getElementById("installments");
     const installmentValueDisplay = document.getElementById("installmentValue");
     const creditCardOptions = document.getElementById("creditCardOptions");
+    const searchBar = document.getElementById('searchBar');
+    let products = [];
 
     // Modal elements
     const paymentModal = document.getElementById("paymentModal");
@@ -113,6 +115,51 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    function filterProducts() {
+        const query = searchBar.value.toLowerCase();
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(query) || 
+            product.code.toLowerCase().includes(query)
+        );
+        displayProducts(filteredProducts);
+    }
+
+    function displayProducts(productsToDisplay) {
+        const productsList = document.querySelector("#productsList tbody");
+        productsList.innerHTML = '';
+        productsToDisplay.forEach(product => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${product.name}</td>
+                <td>${product.code}</td>
+                <td>${product.category}</td>
+                <td>R$ ${parseFloat(product.sale_price).toFixed(2).replace('.', ',')}</td>
+                <td>${product.quantity}</td>
+                <td><button class="add-to-cart" data-id="${product.product_id}" data-price="${product.sale_price}" data-name="${product.name}">+</button></td>
+            `;
+            productsList.appendChild(row);
+        });
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-id');
+                const productName = this.getAttribute('data-name');
+                const productPrice = parseFloat(this.getAttribute('data-price'));
+
+                // Verifica se o produto já está no carrinho
+                const existingProduct = cart.find(item => item.id === productId);
+                if (existingProduct) {
+                    existingProduct.quantity += 1;
+                } else {
+                    cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+                }
+
+                // Atualiza a tabela do carrinho
+                updateCartTable();
+            });
+        });
+    }
+
     // Fetch products and handle cart operations
     fetch('../api/get_products.php')
         .then(response => {
@@ -124,42 +171,13 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             console.log('Dados recebidos da API:', data); // Log para verificar os dados recebidos
             if (data.success) {
-                const productsList = document.querySelector("#productsList tbody");
-                if (productsList) {
-                    data.products.forEach(product => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${product.name}</td>
-                            <td>${product.code}</td>
-                            <td>R$ ${parseFloat(product.sale_price).toFixed(2).replace('.', ',')}</td>
-                            <td>${product.quantity}</td>
-                            <td><button class="add-to-cart" data-id="${product.product_id}" data-price="${product.sale_price}" data-name="${product.name}">+</button></td>
-                        `;
-                        productsList.appendChild(row);
-                    });
-
-                    document.querySelectorAll('.add-to-cart').forEach(button => {
-                        button.addEventListener('click', function() {
-                            const productId = this.getAttribute('data-id');
-                            const productName = this.getAttribute('data-name');
-                            const productPrice = parseFloat(this.getAttribute('data-price'));
-
-                            // Verifica se o produto já está no carrinho
-                            const existingProduct = cart.find(item => item.id === productId);
-                            if (existingProduct) {
-                                existingProduct.quantity += 1;
-                            } else {
-                                cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
-                            }
-
-                            // Atualiza a tabela do carrinho
-                            updateCartTable();
-                        });
-                    });
-                }
+                products = data.products;
+                displayProducts(products);
             } else {
                 console.error('Erro ao carregar produtos:', data.error);
             }
         })
         .catch(error => console.error('Erro ao carregar produtos:', error));
+
+    searchBar.addEventListener('input', filterProducts);
 });
