@@ -53,7 +53,7 @@ $user_id = $_SESSION['user_id'];
     </header>
 
 <div class="container">
-    <h1>Caixa - Realizar Venda</h1>
+    <h1>Caixa</h1>
 
     <div class="sections-wrapper">
         <!-- Lista de Produtos -->
