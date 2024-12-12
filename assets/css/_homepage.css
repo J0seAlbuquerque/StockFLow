@@ -33,6 +33,7 @@ body {
 }
 
 .navbar .logo a:hover {
+    display: flex;
     color: #f7c56f; /* Soft Yellow */
 }
 
@@ -84,6 +85,8 @@ body {
     border-radius: 30px; /* Bordas arredondadas suaves */
     transition: background-color 0.3s ease, transform 0.3s ease; /* Transição suave de cor e transformação */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para criar efeito de "flutuação" */
+    position: relative; /* Adiciona posição relativa */
+    left: -25px; /* Ajuste a margem conforme necessário */
 }
 
 .dropbtn:hover {
@@ -101,6 +104,7 @@ body {
     border-radius: 10px; /* Bordas arredondadas para o dropdown */
     opacity: 0;
     transition: opacity 0.3s ease; /* Transição suave de opacidade */
+    margin-left: -90px; /* Ajuste a margem conforme necessário */
 }
 
 .dropdown-content a {

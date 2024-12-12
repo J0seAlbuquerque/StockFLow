@@ -23,7 +23,7 @@
                 <span>|</span>
                 <a href="../pages/estoque.php">Estoque</a>
                 <span>|</span>
-                <a href="../pages/">Vendas</a>
+                <a href="../pages/">Vendas</a>               
             </div>
             
             <!-- Nome da empresa logada com o dropdown -->
@@ -32,7 +32,7 @@
                 <div class="dropdown">
                     <button class="dropbtn">Mais +</button>
                     <div class="dropdown-content">
-                        <a href="../pages/preencher_info_empresa.php">Editar Dados</a>
+                        <a href="../pages/ver_info_empresa.php">Minha empresa</a>
                         <a href="../pages/login.php">Sair</a>
                     </div>
                 </div>

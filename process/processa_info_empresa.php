@@ -2,7 +2,6 @@
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
     
-
     // Incluir arquivo de configuração para a conexão com o banco
     require_once '../includes/config.php';
     session_start();
@@ -30,14 +29,25 @@
             die('Por favor, preencha todos os campos obrigatórios.');
         }
 
-        // Inserir os dados da empresa na tabela company_info
-        $stmt = $conn->prepare("INSERT INTO company_info (company_id, cnpj, address, number, neighborhood, state, city) 
-                                VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('issssss', $user_id, $cnpj, $endereco, $numero, $bairro, $estado, $cidade);
+        // Verificar se a empresa já está cadastrada
+        $query = $conn->prepare("SELECT * FROM company_info WHERE company_id = ?");
+        $query->bind_param('i', $user_id);
+        $query->execute();
+        $result = $query->get_result();
+
+        if ($result->num_rows > 0) {
+            // Atualizar os dados da empresa
+            $stmt = $conn->prepare("UPDATE company_info SET cnpj = ?, address = ?, number = ?, neighborhood = ?, state = ?, city = ? WHERE company_id = ?");
+            $stmt->bind_param('ssssssi', $cnpj, $endereco, $numero, $bairro, $estado, $cidade, $user_id);
+        } else {
+            // Inserir os dados da empresa
+            $stmt = $conn->prepare("INSERT INTO company_info (company_id, cnpj, address, number, neighborhood, state, city) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param('issssss', $user_id, $cnpj, $endereco, $numero, $bairro, $estado, $cidade);
+        }
 
         if ($stmt->execute()) {
             echo "Informações da empresa salvas com sucesso!";
-            header('Location: ../pages/homepage.php'); // Redirecionar para a próxima página do sistema
+            header('Location: ../pages/ver_info_empresa.php'); // Redirecionar para a página de visualização
             exit;
         } else {
             echo "Erro ao salvar as informações: " . $conn->error;

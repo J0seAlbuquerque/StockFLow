@@ -28,7 +28,7 @@ $result = $stmt->get_result();
 <body>
     <!-- Barra de navegação -->
     <header>
-        <nav class="navbar">
+    <nav class="navbar">
             <!-- Nome do sistema no canto esquerdo -->
             <div class="logo">
                 <a href="./homepage.php" class="navbar-brand">StockFlow</a>
@@ -37,12 +37,12 @@ $result = $stmt->get_result();
             <!-- Links de navegação -->
             <div class="nav-links">
                 <a href="./homepage.php">Home</a>
-                <span>|</span>
+                <span>| </span>
                 <a href="../pages/caixa.php">Caixa</a>
-                <span>|</span>
+                <span>| </span>
                 <a href="../pages/estoque.php">Estoque</a>
-                <span>|</span>
-                <a href="../pages/">Vendas</a>
+                <span>| </span>
+                <a href="../pages/">Vendas</a>               
             </div>
             
             <!-- Nome da empresa logada com o dropdown -->
@@ -51,7 +51,7 @@ $result = $stmt->get_result();
                 <div class="dropdown">
                     <button class="dropbtn">Mais +</button>
                     <div class="dropdown-content">
-                        <a href="../pages/preencher_info_empresa.php">Editar Dados</a>
+                        <a href="../pages/ver_info_empresa.php">Minha empresa</a>
                         <a href="../pages/login.php">Sair</a>
                     </div>
                 </div>
@@ -137,7 +137,7 @@ $result = $stmt->get_result();
                                 <td>R$ <?php echo number_format($produto['sale_price'], 2, ',', '.'); ?></td>
                                 <td><?php echo htmlspecialchars($produto['quantity']); ?></td>
                                 <td>
-                                    <a href="editar_produto.php?id=<?php echo $produto['id']; ?>">Editar</a>
+                                    <a href="#" onclick='openEditModal(<?php echo json_encode($produto); ?>)'>Editar</a>
                                     <a href="../process/excluir_produto.php?delete=<?php echo $produto['product_id']; ?>">Excluir</a>
                                 </td>
                             </tr>
@@ -149,6 +149,45 @@ $result = $stmt->get_result();
                     <?php endif; ?>
                 </tbody>
             </table>
+
+            <!-- Modal de Edição -->
+            <div id="editModal" class="popup">
+                <span class="close-btn" id="close-edit-popup-btn">&times;</span>
+                <h2>Editar Produto</h2>
+                <form id="editForm" action="../process/editar_produto.php" method="post">
+                    <input type="hidden" name="id" id="editId">
+                    <div class="form-group">
+                        <label for="editName">Nome:</label>
+                        <input type="text" name="name" id="editName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCode">Código:</label>
+                        <input type="text" name="code" id="editCode" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editSupplier">Fornecedor:</label>
+                        <input type="text" name="supplier" id="editSupplier" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCategory">Categoria:</label>
+                        <input type="text" name="category" id="editCategory" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCostPrice">Preço de Custo:</label>
+                        <input type="text" name="cost_price" id="editCostPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editSalePrice">Preço de Venda:</label>
+                        <input type="text" name="sale_price" id="editSalePrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editQuantity">Quantidade:</label>
+                        <input type="text" name="quantity" id="editQuantity" required>
+                    </div>
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+            <div id="popup-overlay" class="popup-overlay"></div>
         </section>
     </div>
 </div>

@@ -21,7 +21,7 @@ $user_id = $_SESSION['user_id'];
 <body>
     <!-- Barra de navegação -->
     <header>
-        <nav class="navbar">
+    <nav class="navbar">
             <!-- Nome do sistema no canto esquerdo -->
             <div class="logo">
                 <a href="./homepage.php" class="navbar-brand">StockFlow</a>
@@ -35,7 +35,7 @@ $user_id = $_SESSION['user_id'];
                 <span>|</span>
                 <a href="../pages/estoque.php">Estoque</a>
                 <span>|</span>
-                <a href="../pages/">Vendas</a>
+                <a href="../pages/">Vendas</a>               
             </div>
             
             <!-- Nome da empresa logada com o dropdown -->
@@ -44,7 +44,7 @@ $user_id = $_SESSION['user_id'];
                 <div class="dropdown">
                     <button class="dropbtn">Mais +</button>
                     <div class="dropdown-content">
-                        <a href="../pages/preencher_info_empresa.php">Editar Dados</a>
+                        <a href="../pages/ver_info_empresa.php">Minha empresa</a>
                         <a href="../pages/login.php">Sair</a>
                     </div>
                 </div>
