@@ -148,6 +148,11 @@ h1 {
     font-size: 2rem; /* Tamanho do título */
 }
 
+h2 {
+    color: #1abc9c; /* Cor do subtítulo */
+    font-size: 1.5rem; /* Tamanho do subtítulo */
+}
+
 /* Formulário de Cadastro */
 #form-section {
     display: flex;

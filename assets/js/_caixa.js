@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>${product.category}</td>
                 <td>R$ ${parseFloat(product.sale_price).toFixed(2).replace('.', ',')}</td>
                 <td>${product.quantity}</td>
-                <td><button class="add-to-cart" data-id="${product.product_id}" data-price="${product.sale_price}" data-name="${product.name}">+</button></td>
+                <td><button class="add-to-cart" data-id="${product.product_id}" data-price="${product.sale_price}" data-name="${product.name}" data-quantity="${product.quantity}">+</button></td>
             `;
             productsList.appendChild(row);
         });
@@ -145,13 +145,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 const productId = this.getAttribute('data-id');
                 const productName = this.getAttribute('data-name');
                 const productPrice = parseFloat(this.getAttribute('data-price'));
+                const productQuantity = parseInt(this.getAttribute('data-quantity'));
 
                 // Verifica se o produto já está no carrinho
                 const existingProduct = cart.find(item => item.id === productId);
                 if (existingProduct) {
-                    existingProduct.quantity += 1;
+                    if (existingProduct.quantity < productQuantity) {
+                        existingProduct.quantity += 1;
+                    } else {
+                        alert('Quantidade em estoque insuficiente.');
+                    }
                 } else {
-                    cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+                    if (productQuantity > 0) {
+                        cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+                    } else {
+                        alert('Quantidade em estoque insuficiente.');
+                    }
                 }
 
                 // Atualiza a tabela do carrinho

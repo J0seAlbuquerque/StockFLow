@@ -4,7 +4,6 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    padding-top: 60px;
     background: linear-gradient(135deg, #2c3e50, #1e2a47);
 }
 
@@ -15,7 +14,6 @@ body {
     margin-top: 20px;
     width: 80%;
     margin: 0 auto; 
-    padding: 20px;
 }
 
 .sections-wrapper {
@@ -28,6 +26,8 @@ body {
 #products-section {
     flex: 1;
     margin-right: 20px;
+    height: 100%; /* Adiciona altura total */
+    margin-top: -65px;
 }
 
 /* Wrapper do carrinho */
@@ -36,16 +36,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    height: 100%; /* Adiciona altura total */
 }
 
 /* Seção do carrinho */
 #cart-section {
     width: 100%;
     background-color: #fff;
-    padding: 20px; /* Aumenta o padding */
+    padding: 5px; /* Aumenta o padding */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     font-size: 1em; /* Aumenta o tamanho da fonte */
-    margin-top: 10px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Garante que o conteúdo ocupe toda a altura */
+    height: 100%; /* Adiciona altura total */
 }
 
 #cartSummary th, #cartSummary td {
@@ -441,7 +446,7 @@ select {
 
 /* Barra de Pesquisa */
 .search-bar {
-    width: 50%; /* Diminui a largura da barra de pesquisa */
-    padding: 10px;
+    width: 25%; /* Diminui a largura da barra de pesquisa */
+    padding: 7.5px;
     margin-bottom: 10px; /* Diminui a margem inferior */
 }
