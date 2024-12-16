@@ -5,11 +5,11 @@ services:
     build: .
     container_name: stockflow
     ports:
-      - "8000:80"  # Acessa o site pela porta 8000 no host
+      - "8000:80"  # Acessa o site pela porta 8000
     volumes:
       - .:/var/www/html  # Monta a pasta do projeto no contêiner
     depends_on:
-      - db  # Dependência do banco de dados (MySQL)
+      - db  # Dependência do contêiner db
 
   db:
     image: mysql:8.0
@@ -18,9 +18,9 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: stockflow
     volumes:
-      - ./database:/var/lib/mysql  # Persiste o banco de dados na pasta local
+      - ./database:/var/lib/mysql # Monta a pasta do banco de dados no contêiner
     ports:
-      - "3306:3306"  # Acessa o MySQL pela porta 3306 no host
+      - "3306:3306"  # MySQL 3306 no host
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -29,4 +29,4 @@ services:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "8080:80"  # Acessa o phpMyAdmin pela porta 8080
+      - "8080:80"  # Porta phpMyAdmin

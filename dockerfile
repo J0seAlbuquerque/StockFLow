@@ -1,7 +1,7 @@
-# Escolha da imagem base, PHP com Apache
+# Imagem base, PHP com Apache
 FROM php:8.1-apache
 
-# Instalar dependências do PHP (exemplo: MySQLi)
+# Instalar dependências do PHP
 RUN docker-php-ext-install mysqli
 
 # Habilitar o mod_rewrite do Apache para URLs amigáveis
