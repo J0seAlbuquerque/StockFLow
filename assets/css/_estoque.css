@@ -245,13 +245,20 @@ form button:hover {
 }
 
 #produtos-lista a {
-    color: #ffffff;
+    color: #001258;
     text-decoration: none;
     margin-right: 10px;
 }
 
 #produtos-lista a:hover {
     text-decoration: underline;
+}
+
+#produtos-lista td {
+    background-color: #f4f4f9; /* Cor de fundo padrão */
+    color: #333; /* Cor do texto */
+    padding: 15px;
+    border: 1px solid #1abc9c;
 }
 
 /* Pop-up */

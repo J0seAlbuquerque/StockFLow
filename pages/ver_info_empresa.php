@@ -8,6 +8,7 @@
 
     $user_id = $_SESSION['user_id'];
 
+    // Consulta para obter as informações da empresa
     $query = $conn->prepare("SELECT * FROM company_info WHERE company_id = ?");
     $query->bind_param('i', $user_id);
     $query->execute();
@@ -24,6 +25,16 @@
         $cidade = $row['city'];
         $dados_registrados = true;
     }
+
+    // Consulta para obter o nome da empresa
+    $query = $conn->prepare("SELECT company_name FROM users WHERE user_id = ?");
+    $query->bind_param('i', $user_id);
+    $query->execute();
+    $result = $query->get_result();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $empresaNome = $row['company_name'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -35,10 +46,42 @@
     <link rel="stylesheet" href="../assets/css/_prench_i.css">
 </head>
 <body>
+<header>
+        <nav class="navbar">
+            <!-- Nome do sistema no canto esquerdo -->
+            <div class="logo">
+                <a href="./homepage.php" class="navbar-brand">StockFlow</a>
+            </div>
+            
+            <!-- Links de navegação -->
+            <div class="nav-links">
+                <a href="./homepage.php">Home</a>
+                <span>|</span>
+                <a href="../pages/caixa.php">Caixa</a>
+                <span>|</span>
+                <a href="../pages/estoque.php">Estoque</a>
+                <span>|</span>
+                <a href="../pages/">Vendas</a>               
+            </div>
+            
+            <!-- Nome da empresa logada com o dropdown -->
+            <div class="user-info">                
+                <div class="dropdown">
+                    <button class="dropbtn">Mais +</button>
+                    <div class="dropdown-content">
+                        <a href="../pages/ver_info_empresa.php">Minha empresa</a>
+                        <a href="../pages/login.php">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo da página -->
     <div class="container">
         <div class="box">
-            <h1 class="site-name">StockFlow</h1>
             <h2>Informações da Empresa</h2>
+            <h1 class="site-name"><?php echo htmlspecialchars($empresaNome); ?></h1>
             <?php if ($dados_registrados): ?>
                 <p><strong>CNPJ:</strong> <?php echo htmlspecialchars($cnpj); ?></p>
                 <p><strong>Endereço:</strong> <?php echo htmlspecialchars($endereco); ?></p>

@@ -8,3 +8,5 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
         });
     });
 });
+
+  
