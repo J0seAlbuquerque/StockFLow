@@ -78,7 +78,7 @@
     </header>
 
     <!-- Conteúdo da página -->
-    <div class="container">
+    <div class="container" style="margin-top: 20px;">
         <div class="box">
             <h2>Informações da Empresa</h2>
             <h1 class="site-name"><?php echo htmlspecialchars($empresaNome); ?></h1>
@@ -89,7 +89,7 @@
                 <p><strong>Bairro:</strong> <?php echo htmlspecialchars($bairro); ?></p>
                 <p><strong>Estado:</strong> <?php echo htmlspecialchars($estado); ?></p>
                 <p><strong>Cidade:</strong> <?php echo htmlspecialchars($cidade); ?></p>
-                <a href="preencher_info_empresa.php" class="btn">Editar Informações</a>
+                <a href="preencher_info_empresa.php" class="btn edit-btn">Editar Informações</a>
             <?php else: ?>
                 <p>Dados ainda não registrados.</p>
                 <a href="preencher_info_empresa.php" class="btn">Adicionar Informações</a>
