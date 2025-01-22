@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['nomeEmpresa'])) {
+    header("Location: ../pages/login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -33,7 +40,7 @@
                     <button class="dropbtn">Mais +</button>
                     <div class="dropdown-content">
                         <a href="../pages/ver_info_empresa.php">Minha empresa</a>
-                        <a href="../pages/login.php">Sair</a>
+                        <a href="../process/processa_logout.php">Sair</a>
                     </div>
                 </div>
             </div>

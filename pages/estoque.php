@@ -1,13 +1,14 @@
 <?php
-session_start(); // Inicia a sessão
+session_start();
+if (!isset($_SESSION['nomeEmpresa']) || !isset($_SESSION['user_id'])) {
+    header("Location: ../pages/login.php");
+    exit();
+}
 require_once('../includes/config.php');
 
 // Verifica se o usuário está autenticado e obtém o user_id da sessão
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
-} else {
-    die('Erro: Usuário não autenticado.');
-}
+$user_id = $_SESSION['user_id'];
+$nomeEmpresa = $_SESSION['nomeEmpresa']; // Define the $nomeEmpresa variable
 
 // Consultar produtos no banco para o usuário autenticado
 $query = "SELECT * FROM products WHERE user_id = ?";
@@ -47,12 +48,12 @@ $result = $stmt->get_result();
             
             <!-- Nome da empresa logada com o dropdown -->
             <div class="user-info">
-                <span class="empresa-name"><?php echo $nomeEmpresa; ?></span>
+                <span class="empresa-name"><?php echo htmlspecialchars($nomeEmpresa); ?></span>
                 <div class="dropdown">
                     <button class="dropbtn">Mais +</button>
                     <div class="dropdown-content">
                         <a href="../pages/ver_info_empresa.php">Minha empresa</a>
-                        <a href="../pages/login.php">Sair</a>
+                        <a href="../process/processa_logout.php">Sair</a>
                     </div>
                 </div>
             </div>
@@ -137,7 +138,7 @@ $result = $stmt->get_result();
                                 <td>R$ <?php echo number_format($produto['sale_price'], 2, ',', '.'); ?></td>
                                 <td><?php echo htmlspecialchars($produto['quantity']); ?></td>
                                 <td>
-                                    <a href="#" onclick='openEditModal(<?php echo json_encode($produto); ?>)'>Editar</a>
+                                    <a href="#" onclick='openEditModal(<?php echo json_encode($produto, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>)'>Editar</a>
                                     <a href="../process/excluir_produto.php?delete=<?php echo $produto['product_id']; ?>">Excluir</a>
                                 </td>
                             </tr>
@@ -187,7 +188,6 @@ $result = $stmt->get_result();
                     <button type="submit">Salvar</button>
                 </form>
             </div>
-            <div id="popup-overlay" class="popup-overlay"></div>
         </section>
     </div>
 </div>

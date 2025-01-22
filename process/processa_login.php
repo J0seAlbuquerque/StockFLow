@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user_id'] = $user['user_id'];
     $_SESSION['name'] = $user['name'];
     $_SESSION['company_name'] = $user['company_name'];
+    $_SESSION['nomeEmpresa'] = $user['company_name']; // Defina a variável de sessão com o nome da empresa
 
     // Redirecionar para a página inicial ou página desejada
     header('Location: ../pages/homepage.php');

@@ -1,12 +1,12 @@
 <?php
 session_start();
+if (!isset($_SESSION['nomeEmpresa']) || !isset($_SESSION['user_id'])) {
+    header("Location: ../pages/login.php");
+    exit();
+}
 require_once('../includes/config.php');
 
 // Verifica se o usuário está autenticado
-if (!isset($_SESSION['user_id'])) {
-    die('Erro: Usuário não autenticado.');
-}
-
 $user_id = $_SESSION['user_id'];
 ?>
 
@@ -45,7 +45,7 @@ $user_id = $_SESSION['user_id'];
                     <button class="dropbtn">Mais +</button>
                     <div class="dropdown-content">
                         <a href="../pages/ver_info_empresa.php">Minha empresa</a>
-                        <a href="../pages/login.php">Sair</a>
+                        <a href="../process/processa_logout.php">Sair</a>
                     </div>
                 </div>
             </div>
