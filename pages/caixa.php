@@ -6,8 +6,8 @@ if (!isset($_SESSION['nomeEmpresa']) || !isset($_SESSION['user_id'])) {
 }
 require_once('../includes/config.php');
 
-// Verifica se o usuário está autenticado
 $user_id = $_SESSION['user_id'];
+$nomeEmpresa = $_SESSION['nomeEmpresa'];
 ?>
 
 <!DOCTYPE html>
