@@ -17,15 +17,16 @@ $categoria = $_POST['categoria'];
 $preco_custo = $_POST['preco_custo'];
 $preco_venda = $_POST['preco_venda'];
 $quantidade = $_POST['quantidade'];
-$vencimento = $_POST['vencimento'];
+$tem_vencimento = isset($_POST['tem_vencimento']) ? 1 : 0;
+$vencimento = $tem_vencimento ? $_POST['vencimento'] : null;
 
 // Insere o produto no banco de dados
-$query = "INSERT INTO products (user_id, name, code, supplier, category, cost_price, sale_price, quantity, expiration_date)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$query = "INSERT INTO products (user_id, name, code, supplier, category, cost_price, sale_price, quantity, expiration_date, has_expiration)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param(
-    'issssddis',
+    'issssddisi',
     $user_id,
     $nome,
     $codigo,
@@ -34,7 +35,8 @@ $stmt->bind_param(
     $preco_custo,
     $preco_venda,
     $quantidade,
-    $vencimento
+    $vencimento,
+    $tem_vencimento
 );
 
 if ($stmt->execute()) {

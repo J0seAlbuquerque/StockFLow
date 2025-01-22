@@ -36,3 +36,9 @@ document.getElementById('popup-overlay').addEventListener('click', function() {
     document.getElementById('editModal').style.display = 'none';
     document.getElementById('popup-overlay').style.display = 'none';
 });
+
+function toggleVencimento() {
+    const vencimentoGroup = document.getElementById('vencimento-group');
+    const temVencimento = document.getElementById('tem_vencimento').checked;
+    vencimentoGroup.style.display = temVencimento ? 'block' : 'none';
+}

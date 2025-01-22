@@ -102,6 +102,10 @@ $result = $stmt->get_result();
                     <input type="number" id="quantidade" name="quantidade" required>
                 </div>
                 <div class="form-group">
+                    <label for="tem_vencimento">Tem Data de Vencimento:</label>
+                    <input type="checkbox" id="tem_vencimento" name="tem_vencimento" onchange="toggleVencimento()">
+                </div>
+                <div class="form-group" id="vencimento-group" style="display: none;">
                     <label for="vencimento">Data de Vencimento:</label>
                     <input type="date" id="vencimento" name="vencimento">
                 </div>
