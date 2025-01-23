@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const creditCardOptions = document.getElementById("creditCardOptions");
     const searchBar = document.getElementById('searchBar');
     let products = [];
+    let discount = { type: null, value: 0 }; // Controle do desconto
 
     // Modal elements
     const paymentModal = document.getElementById("paymentModal");
@@ -42,12 +43,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
     creditCardInstallments.addEventListener("change", updateInstallmentValue);
 
-    function updateInstallmentValue() {
-        const total = parseFloat(totalAmountModal.textContent.replace('Total: R$ ', '').replace(',', '.'));
+    function updateInstallmentValue(total = null) {
+        const totalAmount = total || parseFloat(document.getElementById('totalAmountModal').textContent.replace('Total: R$ ', '').replace(',', '.'));
         const installments = parseInt(creditCardInstallments.value);
-        const installmentValue = total / installments;
+        const installmentValue = totalAmount / installments;
         installmentValueDisplay.textContent = `Valor da Parcela: R$ ${installmentValue.toFixed(2).replace('.', ',')}`;
     }
+
+    // Atualizar o valor total com desconto
+    function applyDiscount() {
+        const discountType = document.getElementById('discountType').value;
+        const discountValue = parseFloat(document.getElementById('discountValue').value);
+
+        if (isNaN(discountValue) || discountValue <= 0) {
+            alert('Insira um valor de desconto válido.');
+            return;
+        }
+
+        discount.type = discountType;
+        discount.value = discountValue;
+        updateTotalWithDiscount();
+    }
+
+    // Remover desconto
+    function removeDiscount() {
+        discount = { type: null, value: 0 };
+        updateTotalWithDiscount();
+    }
+
+    // Atualizar o total com o desconto aplicado
+    function updateTotalWithDiscount() {
+        const totalElement = document.getElementById('totalAmountModal');
+        const discountDisplay = document.getElementById('discountDisplay');
+
+        const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        let discountedTotal = total;
+
+        if (discount.type === 'reais') {
+            discountedTotal = Math.max(0, total - discount.value);
+        } else if (discount.type === 'percentual') {
+            discountedTotal = Math.max(0, total - (total * discount.value / 100));
+        }
+
+        totalElement.textContent = `Total: R$ ${discountedTotal.toFixed(2).replace('.', ',')}`;
+        discountDisplay.textContent = `Desconto Aplicado: R$ ${(total - discountedTotal).toFixed(2).replace('.', ',')}`;
+
+        updateInstallmentValue(discountedTotal); // Atualizar parcelas se necessário
+    }
+
+    // Eventos para os botões de desconto
+    document.getElementById('applyDiscount').addEventListener('click', applyDiscount);
+    document.getElementById('removeDiscount').addEventListener('click', removeDiscount);
 
     function updateCartTable() {
         cartTableBody.innerHTML = '';
@@ -80,8 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         totalAmount.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
-        totalAmountModal.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
-        updateInstallmentValue();
+        updateTotalWithDiscount();
 
         // Adiciona evento de clique para remover uma unidade do carrinho
         document.querySelectorAll('.remove-from-cart').forEach(button => {
