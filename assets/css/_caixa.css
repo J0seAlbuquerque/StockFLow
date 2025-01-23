@@ -420,6 +420,12 @@ th {
     margin-bottom: 20px; /* Add space below the payment method dropdown */
 }
 
+#discountType {
+    margin-bottom: 20px; /* Add space below the discount type dropdown */
+    background-color: #1abc9c;
+    color: white;
+}
+
 #installments {
     border: #1e2a47;
     border-radius: 12px;

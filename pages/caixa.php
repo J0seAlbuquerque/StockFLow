@@ -138,19 +138,15 @@ $nomeEmpresa = $_SESSION['nomeEmpresa'];
                 </select>
                 <div id="installmentValue">Valor da Parcela: R$ 0,00</div>
             </div>
-            <div>
-                <label for="discountType">Tipo de Desconto:</label>
-                <select id="discountType">
-                    <option value="reais">R$</option>
-                    <option value="percentual">%</option>
-                </select>
-
-                <label for="discountValue">Valor do Desconto:</label>
-                <input type="number" id="discountValue" placeholder="Digite o valor">
-
-                <button id="applyDiscount">Aplicar Desconto</button>
-                <button id="removeDiscount">Remover Desconto</button>
-            </div>
+            <label for="discountType">Tipo de Desconto:</label>
+            <select id="discountType">
+                <option value="reais">R$</option>
+                <option value="percentual">%</option>
+            </select>
+            <label for="discountValue">Valor do Desconto:</label>
+            <input type="number" id="discountValue" placeholder="Digite o valor">
+            <button id="applyDiscount">Aplicar Desconto</button>
+            <button id="removeDiscount">Remover Desconto</button>
             <div id="discountDisplay">Desconto Aplicado: R$ 0,00</div>
             <div id="totalAmountModal">Total: R$ 0,00</div>
             <button id="confirmPayment">Confirmar Pagamento</button>
