@@ -26,10 +26,10 @@ StockFlow é um sistema de gerenciamento de estoque desenvolvido para compor a n
 ---
 
 ## 🛠️ Tecnologias  
-- **Backend:** PHP 8.1  
-- **Frontend:** HTML5, CSS3, JavaScript  
-- **Banco de Dados:** MySQL  
-- **Servidor Local:** XAMPP  
-- **Virtualização:** DOCKER
+- **Backend:**  PHP 8.1  
+- **Frontend:**  HTML5, CSS3, JavaScript  
+- **Banco de Dados:**  MySQL  
+- **Servidor Local:**  XAMPP  
+- **Virtualização:**  DOCKER
 
 ---
