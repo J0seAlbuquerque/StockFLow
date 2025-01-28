@@ -320,7 +320,7 @@ th {
     padding: 20px;
     border: 1px solid #888;
     width: 50%; /* Reduce width */
-    max-width: 500px; /* Ajusta a largura máxima do modal */
+    max-width: 800px; /* Ajusta a largura máxima do modal */
     font-size: 0.9em; /* Ajusta o tamanho da fonte */
     position: relative; /* Ensure it stays within the modal */
     top: 50%; /* Center vertically */

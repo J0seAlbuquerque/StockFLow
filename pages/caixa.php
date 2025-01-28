@@ -119,8 +119,11 @@ $nomeEmpresa = $_SESSION['nomeEmpresa'];
                     <!-- Itens do carrinho serão exibidos aqui -->
                 </tbody>
             </table>
+            <label for="customerName">Nome do Cliente:</label>
+            <input type="text" id="customerName" placeholder="Digite o nome do cliente">
             <label for="paymentMethod">Forma de Pagamento:</label>
             <select id="paymentMethod">
+                <option value="null">Selecione a forma de pagamento</option>
                 <option value="dinheiro">Dinheiro</option>
                 <option value="pix">Pix</option>
                 <option value="debito">Cartão de Débito</option>
@@ -138,16 +141,6 @@ $nomeEmpresa = $_SESSION['nomeEmpresa'];
                 </select>
                 <div id="installmentValue">Valor da Parcela: R$ 0,00</div>
             </div>
-            <label for="discountType">Tipo de Desconto:</label>
-            <select id="discountType">
-                <option value="reais">R$</option>
-                <option value="percentual">%</option>
-            </select>
-            <label for="discountValue">Valor do Desconto:</label>
-            <input type="number" id="discountValue" placeholder="Digite o valor">
-            <button id="applyDiscount">Aplicar Desconto</button>
-            <button id="removeDiscount">Remover Desconto</button>
-            <div id="discountDisplay">Desconto Aplicado: R$ 0,00</div>
             <div id="totalAmountModal">Total: R$ 0,00</div>
             <button id="confirmPayment">Confirmar Pagamento</button>
         </div>
