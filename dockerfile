@@ -13,7 +13,7 @@ COPY . /var/www/html/StockFLow
 # Definir as permissões corretas (se necessário)
 RUN chown -R www-data:www-data /var/www/html/StockFLow
 
-# Expor a porta 80 para o Apache
+# Expor porta 80 do contêiner
 EXPOSE 80
 
 # Definir o comando de inicialização do Apache
