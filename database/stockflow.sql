@@ -39,6 +39,7 @@ CREATE TABLE products (
     cost_price DECIMAL(10, 2) NOT NULL,
     sale_price DECIMAL(10, 2) NOT NULL,
     expiration_date DATE DEFAULT NULL,
+    has_expiration BOOLEAN DEFAULT 0,
     quantity INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
