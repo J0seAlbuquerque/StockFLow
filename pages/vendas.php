@@ -53,6 +53,13 @@ $nomeEmpresa = $_SESSION['nomeEmpresa']; // Define the $nomeEmpresa variable
             <h2>Vendas Realizadas</h2>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Pesquisar por ID ou Nome do Cliente">
+                <select id="paymentFilter">
+                    <option value="">Todos os Métodos de Pagamento</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                    <option value="Pix">Pix</option>
+                    <option value="Debito">Debito</option>
+                    <option value="Credito">Credito</option>
+                </select>
             </div>
             <table class="styled-table" id="salesTable">
                 <thead>
@@ -73,11 +80,19 @@ $nomeEmpresa = $_SESSION['nomeEmpresa']; // Define the $nomeEmpresa variable
                     $stmt->execute();
                     $result = $stmt->get_result();
 
+                    $payment_method_names = [
+                        'cash' => 'Dinheiro',
+                        'pix' => 'Pix',
+                        'debit_card' => 'Debito',
+                        'credit_card' => 'Credito'
+                    ];
+
                     while ($row = $result->fetch_assoc()) {
+                        $payment_method_display = $payment_method_names[$row['payment_method']];
                         echo "<tr>";
                         echo "<td>{$row['sale_id']}</td>";
                         echo "<td>{$row['customer_name']}</td>";
-                        echo "<td>{$row['payment_method']}</td>";
+                        echo "<td>{$payment_method_display}</td>";
                         echo "<td>{$row['total_amount']}</td>";
                         echo "<td>{$row['sale_date']}</td>";
                         echo "</tr>";
