@@ -1,6 +1,16 @@
 # StockFLow
 StockFlow é um sistema de gerenciamento de estoque desenvolvido para compor a nota da Materia de Programação Web ministrada pelo Professor Marlon. O sistema permite que usuários gerenciem produtos, vendas e dados da empresa de forma centralizada.
 
+## Discentes
+1. `José Orlando`
+2. `Pedro Moreira`
+
+### Clonar repositorio na sua maquina
+#### Via Git
+```bash
+git clone https://github.com/J0seAlbuquerque/StockFLow
+```
+
 ## 🌟 Funcionalidades  
 ### 1. **Autenticação**  
 - Sistema de login e cadastro.  
