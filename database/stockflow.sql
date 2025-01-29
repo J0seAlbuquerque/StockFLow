@@ -54,6 +54,7 @@ CREATE TABLE sales (
     total_amount DECIMAL(10, 2) NOT NULL,
     profit DECIMAL(10, 2) NOT NULL,
     sale_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    receipt TEXT, -- Adiciona a coluna receipt para armazenar o recibo
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 

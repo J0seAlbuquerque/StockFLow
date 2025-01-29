@@ -69,12 +69,13 @@ $nomeEmpresa = $_SESSION['nomeEmpresa']; // Define the $nomeEmpresa variable
                         <th>Método de Pagamento</th>
                         <th>Valor Total</th>
                         <th>Data da Venda</th>
+                        <th>Recibo</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     require_once('../includes/config.php');
-                    $query = "SELECT sale_id, customer_name, payment_method, total_amount, sale_date FROM sales WHERE user_id = ?";
+                    $query = "SELECT sale_id, customer_name, payment_method, total_amount, sale_date, receipt FROM sales WHERE user_id = ?";
                     $stmt = $conn->prepare($query);
                     $stmt->bind_param('i', $user_id);
                     $stmt->execute();
@@ -95,6 +96,7 @@ $nomeEmpresa = $_SESSION['nomeEmpresa']; // Define the $nomeEmpresa variable
                         echo "<td>{$payment_method_display}</td>";
                         echo "<td>{$row['total_amount']}</td>";
                         echo "<td>{$row['sale_date']}</td>";
+                        echo "<td><a href='#' onclick='showReceipt({$row['sale_id']})'>Ver Recibo</a></td>";
                         echo "</tr>";
                     }
                     ?>
@@ -102,6 +104,18 @@ $nomeEmpresa = $_SESSION['nomeEmpresa']; // Define the $nomeEmpresa variable
             </table>
         </section>
     </main>
+    <script>
+        function showReceipt(saleId) {
+            fetch(`../api/get_receipt.php?sale_id=${saleId}`)
+                .then(response => response.text())
+                .then(data => {
+                    const receiptWindow = window.open('', '_blank');
+                    receiptWindow.document.write(data);
+                    receiptWindow.document.close();
+                })
+                .catch(error => console.error('Erro ao carregar o recibo:', error));
+        }
+    </script>
     <script src="../assets/js/_vendas.js"></script>
 </body>
 </html>

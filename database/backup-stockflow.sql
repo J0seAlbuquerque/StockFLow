@@ -6,7 +6,6 @@
 --     sales:           Registra as vendas realizadas, com o valor total, método de pagamento e lucro.
 --     sales_items:     Detalha os itens vendidos em cada venda, vinculados à tabela de vendas.
 --     stock_movements: Registra entradas e saídas de produtos no estoque.
-
 -- Criando o banco de dados
 CREATE DATABASE stockflow;
 
@@ -48,6 +47,7 @@ CREATE TABLE products (
     cost_price DECIMAL(10, 2) NOT NULL,
     sale_price DECIMAL(10, 2) NOT NULL,
     expiration_date DATE DEFAULT NULL,
+    has_expiration BOOLEAN DEFAULT 0,
     quantity INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE

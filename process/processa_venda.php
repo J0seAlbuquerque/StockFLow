@@ -49,10 +49,28 @@ foreach ($cart_items as $item) {
     $profit += ($unit_price - $cost_price) * $quantity;
 }
 
+// Gera o recibo em formato HTML
+$receipt = "<h1>Recibo de Compra</h1>";
+$receipt .= "<p>Nome do Cliente: $customer_name</p>";
+$receipt .= "<p>Método de Pagamento: $payment_method</p>";
+$receipt .= "<p>Total: R$ $total_amount</p>";
+$receipt .= "<table border='1'><tr><th>Produto</th><th>Quantidade</th><th>Preço Unitário</th><th>Total</th></tr>";
+
+foreach ($cart_items as $item) {
+    $receipt .= "<tr>";
+    $receipt .= "<td>{$item['name']}</td>";
+    $receipt .= "<td>{$item['quantity']}</td>";
+    $receipt .= "<td>R$ {$item['price']}</td>";
+    $receipt .= "<td>R$ " . ($item['price'] * $item['quantity']) . "</td>";
+    $receipt .= "</tr>";
+}
+
+$receipt .= "</table>";
+
 // Insere a venda no banco de dados
-$query = "INSERT INTO sales (user_id, customer_name, payment_method, total_amount, profit) VALUES (?, ?, ?, ?, ?)";
+$query = "INSERT INTO sales (user_id, customer_name, payment_method, total_amount, profit, receipt) VALUES (?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($query);
-$stmt->bind_param('issdd', $user_id, $customer_name, $payment_method_db, $total_amount, $profit);
+$stmt->bind_param('issdds', $user_id, $customer_name, $payment_method_db, $total_amount, $profit, $receipt);
 
 if ($stmt->execute()) {
     $sale_id = $stmt->insert_id;
