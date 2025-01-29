@@ -4,6 +4,8 @@ if (!isset($_SESSION['nomeEmpresa'])) {
     header("Location: ../pages/login.php");
     exit();
 }
+$user_id = $_SESSION['user_id'];
+$nomeEmpresa = $_SESSION['nomeEmpresa']; // Define the $nomeEmpresa variable
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

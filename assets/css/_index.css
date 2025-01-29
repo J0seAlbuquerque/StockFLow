@@ -7,12 +7,15 @@
 
 body {
   background-color: #1e2a47;
+  display: flex;
+  flex-wrap: wrap; /* Permite quebra de linha se necessário */
+  justify-content: space-between; /* Espaça os blocos uniformemente */
 }
 
 /* Navbar */
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #2c3e50; /* Charcoal */
     padding: 10px 20px;
@@ -27,6 +30,12 @@ body {
     z-index: 1000; /* Garante que ela fique acima de outros elementos */
     background: linear-gradient(135deg, #2c3e50, #1e2a47); /* Gradiente suave de Charcoal para Dark Blue */
     margin: 0; /* Garante que a navbar encoste nas bordas da tela */
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 /* Logo */
@@ -104,11 +113,13 @@ body {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transform: scale(1.05); /* Corrige a propriedade de transformação */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Adiciona transição suave para a cor de fundo e o tamanho */
 }
 
 .welcome-banner .btn-start:hover {
     background-color: #16a085;
+    transform: scale(1.05); /* Adiciona a transformação de escala ao passar o mouse */
 }
 
 /* Responsividade para telas menores */
@@ -132,10 +143,24 @@ body {
 
 /* Estilo das seções */
 .section {
-    padding: 40px;
-    margin-bottom: 40px;
-    background-color: #f9f9f9;
+    width: calc(25% - 20px); /* Ajusta a largura dos blocos para caber 4 na mesma linha */
+    height: 300px; /* Define a altura dos blocos */
+    margin: 10px; /* Reduz o espaçamento entre os blocos */
+    background-color: #2c3e50; /* Fundo escuro */
+    color: #f9f9f9; /* Texto claro */
     border-radius: 8px;
+    padding: 20px; /* Ajusta o padding para caber dentro dos blocos */
+    vertical-align: top; /* Alinha os blocos ao topo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+    transition: border 0.3s ease, transform 0.3s ease; /* Adiciona transição suave para a borda e o tamanho */
+}
+
+.section:hover {
+    border: 2px solid #1abc9c; /* Borda de destaque com Turquoise */
+    transform: scale(1.05); /* Corrige a propriedade de transformação */
+    transition: scale 0.3s ease;
+    background-color: #34495e; /* Fundo escuro ao passar o mouse */
+    color: #ffffff; /* Texto claro ao passar o mouse */
 }
 
 /* Estilo do texto */
@@ -146,4 +171,51 @@ h2 {
 
 p {
     font-size: 18px;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2c3e50; /* Charcoal */
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave para sobrepor ao fundo */
+    border-top: 3px solid #1abc9c; /* Borda de destaque com Turquoise */
+}
+
+.footer p {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+#link:hover{
+    color: black;
+    background-color: white;
+}
+
+#link a:hover{
+    color: black;
+    background-color: white;
+}
+
+#git-span {
+    font-weight: bold;
+    color: #000000;
+}
+
+span {
+    font-weight: bolder;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #000000;
 }

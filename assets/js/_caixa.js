@@ -218,6 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 cart.length = 0; // Limpa o carrinho
                 updateCartTable();
                 paymentModal.style.display = "none";
+                location.reload();
             }
         })
         .catch(error => console.error('Erro ao processar a venda:', error));
