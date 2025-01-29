@@ -7,6 +7,7 @@
     require_once '../includes/config.php';
 
     $user_id = $_SESSION['user_id'];
+    
 
     // Consulta para obter as informações da empresa
     $query = $conn->prepare("SELECT * FROM company_info WHERE company_id = ?");
@@ -61,13 +62,14 @@
                 <span>|</span>
                 <a href="../pages/estoque.php">Estoque</a>
                 <span>|</span>
-                <a href="../pages/">Vendas</a>               
+                <a href="../pages/vendas.php">Vendas</a>               
             </div>
             
             <!-- Nome da empresa logada com o dropdown -->
             <div class="user-info">                
                 <div class="dropdown">
-                    <button class="dropbtn">Mais +</button>
+                <span class="empresa-name"><?php echo $empresaNome; ?></span>
+                    <button class="dropbtn">Mais +</button>                    
                     <div class="dropdown-content">
                         <a href="../pages/ver_info_empresa.php">Minha empresa</a>
                         <a href="../pages/login.php">Sair</a>

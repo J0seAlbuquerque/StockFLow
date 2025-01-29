@@ -35,7 +35,7 @@ $nomeEmpresa = $_SESSION['nomeEmpresa'];
                 <span>|</span>
                 <a href="../pages/estoque.php">Estoque</a>
                 <span>|</span>
-                <a href="../pages/">Vendas</a>               
+                <a href="../pages/vendas.php">Vendas</a>               
             </div>
             
             <!-- Nome da empresa logada com o dropdown -->

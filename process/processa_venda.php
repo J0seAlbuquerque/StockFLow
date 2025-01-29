@@ -78,7 +78,7 @@ if ($stmt->execute()) {
     }
 
     echo 'Venda processada com sucesso!';
-} else {
-    echo 'Erro ao processar a venda: ' . $stmt->error;
-}
+    } else {
+        echo 'Erro ao processar a venda: ' . $stmt->error;
+    }
 ?>

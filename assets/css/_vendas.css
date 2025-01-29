@@ -1,13 +1,10 @@
-/* Estilos gerais da página */
+/* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #2c3e50, #1e2a47);
+    background-color: #1e2a47; /* Dark Blue */
+    color: #f1f1f1; /* White Smoke */
 }
 
 /* Navbar */
@@ -127,120 +124,113 @@ body {
     opacity: 1; /* Torna o dropdown visível com transição suave */
 }
 
+/* Estilos para dispositivos menores (responsividade) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Muda para coluna para melhor adaptação em telas pequenas */
+        align-items: flex-start; /* Alinha os itens à esquerda */
+    }
 
-/* Container que envolve a box */
-.container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px; /* Add margin-top to create space */
+    .nav-links {
+        display: block; /* Exibe os links como blocos em dispositivos pequenos */
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 10px;
+        width: 100%; /* Faz os links ocuparem toda a largura disponível */
+        text-align: left; /* Alinha o texto à esquerda */
+    }
+
+    .user-info {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between; /* Distribui o nome da empresa e o dropdown */
+    }
+
+    .dropdown {
+        width: auto; /* Ajusta o dropdown para caber no espaço */
+    }
 }
 
-/* Caixa do formulário */
-.box {
-    background-color: #fff;
-    padding: 30px;
-    width: 600px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
+@media (max-width: 480px) {
+    .navbar .logo a {
+        font-size: 1.8rem; /* Reduz o tamanho da fonte do nome "StockFlow" em telas muito pequenas */
+    }
+
+    .nav-links a {
+        font-size: 1rem; /* Ajusta o tamanho da fonte dos links */
+    }
+
+    .dropbtn {
+        font-size: 0.9rem; /* Ajusta o tamanho da fonte do botão dropdown */
+    }
 }
 
-/* Título principal */
-.site-name {
-    font-size: 32px;
-    color: #007bff;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-/* Título do formulário */
-h2 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-/* Formulário */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
-
-/* Estilos para os labels */
-label {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
+/* Estilos para a tabela de vendas */
+.styled-table {
+    width: 80%; /* Reduz a largura da tabela */
+    margin: 25px auto; /* Centraliza a tabela */
+    border-collapse: collapse;
+    font-size: 0.9rem; /* Diminui o tamanho da fonte */
     text-align: left;
-    margin-left: 10px;
+    background-color: #2c3e50; /* Charcoal */
+    color: #f1f1f1; /* White Smoke */
 }
 
-/* Estilos para os inputs */
-input, select {
+.styled-table thead tr {
+    background-color: #1abc9c; /* Turquoise */
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #34495e; /* Dark Blue / Charcoal suave */
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #1abc9c; /* Turquoise */
+}
+
+.styled-table tbody tr:hover {
+    background-color: #1e2a47; /* Dark Blue */
+    color: #f7c56f; /* Soft Yellow */
+}
+
+/* Estilos para o título "Vendas Realizadas" */
+.sales-list h2 {
+    text-align: center;
+    font-weight: bolder;
+    color: #1abc9c; /* Turquoise */
+}
+
+/* Estilos para a barra de pesquisa */
+.search-bar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
     padding: 10px;
-    margin: 8px 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
+    width: 50%;
+    font-size: 1rem;
+    border: 1px solid #1abc9c; /* Turquoise */
     border-radius: 5px;
-    box-sizing: border-box;
+    background-color: #2c3e50; /* Charcoal */
+    color: #f1f1f1; /* White Smoke */
 }
 
-/* Input de CNPJ - sozinho na linha */
-#cnpj {
-    width: 100%;
-}
-
-/* Inputs de Endereço e Número - lado a lado */
-#endereco, #numero {
-    width: 48%;
-    display: inline-block;
-}
-
-/* Inputs de Bairro e Estado - lado a lado */
-#bairro, #estado {
-    width: 48%;
-    display: inline-block;
-}
-
-/* Input de Cidade - sozinho na linha */
-#cidade {
-    width: 100%;
-}
-
-/* Botão de envio */
-button {
-    padding: 12px;
-    background-color: #09396c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-}
-
-/* Efeito de hover no botão */
-button:hover {
-    background-color: #031634;
-}
-
-/* Botão de editar informações */
-.edit-btn {
-    border: 1px solid black; /* Borda preta e fina */
-    background-color: transparent; /* Fundo transparente */
-    color: #09396c; /* Cor do texto */
-    padding: 10px 20px;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
-}
-
-.edit-btn:hover {
-    background-color: #2c3e50; /* Cor de fundo ao passar o mouse */
-    color: #f7c56f; /* Cor do texto ao passar o mouse */
+.search-bar input::placeholder {
+    color: #a3c9e2; /* Light Blue */
 }
