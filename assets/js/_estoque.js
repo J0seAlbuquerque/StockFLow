@@ -42,3 +42,19 @@ function toggleVencimento() {
     const temVencimento = document.getElementById('tem_vencimento').checked;
     vencimentoGroup.style.display = temVencimento ? 'block' : 'none';
 }
+
+document.getElementById('search-input').addEventListener('input', function() {
+    const searchValue = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#produtos-lista tbody tr');
+    rows.forEach(row => {
+        const name = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+        const code = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+        const supplier = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+        const category = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+        if (name.includes(searchValue) || code.includes(searchValue) || supplier.includes(searchValue) || category.includes(searchValue)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});

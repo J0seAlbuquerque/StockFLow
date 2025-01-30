@@ -64,6 +64,9 @@ $result = $stmt->get_result();
     <div class="box">
         <h1>Estoque</h1>
 
+        <!-- Barra de pesquisa -->
+        <input type="text" id="search-input" placeholder="Buscar produtos por nome, código, fornecedor ou categoria...">
+
         <!-- Botão para abrir o pop-up -->
         <button id="open-popup-btn">Cadastrar Produto</button>
 
