@@ -451,8 +451,14 @@ select {
 }
 
 /* Barra de Pesquisa */
-.search-bar {
-    width: 25%; /* Diminui a largura da barra de pesquisa */
-    padding: 7.5px;
-    margin-bottom: 10px; /* Diminui a margem inferior */
+#searchBar {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #1abc9c; /* Turquoise */
+    border-radius: 5px;
+    background-color: #2c3e50; /* Charcoal */
+    color: #f1f1f1; /* White Smoke */
+    margin: 0 5px;
 }
