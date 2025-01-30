@@ -104,18 +104,15 @@ $nomeEmpresa = $_SESSION['nomeEmpresa']; // Define the $nomeEmpresa variable
             </table>
         </section>
     </main>
-    <script>
-        function showReceipt(saleId) {
-            fetch(`../api/get_receipt.php?sale_id=${saleId}`)
-                .then(response => response.text())
-                .then(data => {
-                    const receiptWindow = window.open('', '_blank');
-                    receiptWindow.document.write(data);
-                    receiptWindow.document.close();
-                })
-                .catch(error => console.error('Erro ao carregar o recibo:', error));
-        }
-    </script>
+
+    <!-- Modal para exibir o recibo -->
+    <div id="receiptModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="receiptContent"></div>
+        </div>
+    </div>
+
     <script src="../assets/js/_vendas.js"></script>
 </body>
 </html>

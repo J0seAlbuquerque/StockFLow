@@ -24,3 +24,25 @@ function filterTable() {
         }
     }
 }
+
+function showReceipt(saleId) {
+    fetch(`../api/get_receipt.php?sale_id=${saleId}`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('receiptContent').innerHTML = data;
+            document.getElementById('receiptModal').style.display = 'block';
+        })
+        .catch(error => console.error('Erro ao carregar o recibo:', error));
+}
+
+// Fecha o modal quando o usuário clica no botão de fechar
+document.querySelector('.close').addEventListener('click', function() {
+    document.getElementById('receiptModal').style.display = 'none';
+});
+
+// Fecha o modal quando o usuário clica fora do modal
+window.addEventListener('click', function(event) {
+    if (event.target == document.getElementById('receiptModal')) {
+        document.getElementById('receiptModal').style.display = 'none';
+    }
+});
