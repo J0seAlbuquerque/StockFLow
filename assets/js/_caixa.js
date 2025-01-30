@@ -114,6 +114,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateCartTable();
             });
         });
+
+        // Limita a altura da tabela do carrinho e adiciona barra de rolagem se necessário
+        const cartTableContainer = document.querySelector('.cart-table-container');
+        if (cart.length > 6) {
+            cartTableContainer.style.overflowY = 'scroll';
+            cartTableContainer.style.maxHeight = '300px'; // Ajuste conforme necessário
+        } else {
+            cartTableContainer.style.overflowY = 'auto';
+            cartTableContainer.style.maxHeight = 'none';
+        }
     }
 
     function filterProducts() {

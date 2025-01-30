@@ -255,7 +255,7 @@ body {
     padding: 5px;
     border: 4.5px solid #1abc9c;
     width: 80%; /* Largura do modal */
-    max-width: 450px; /* Largura máxima */
+    max-width: 549px; /* Largura máxima */
 }
 
 .close {

@@ -53,6 +53,12 @@ body {
     height: 100%; /* Adiciona altura total */
 }
 
+.cart-table-container {
+    flex: 1;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: none; /* Default to no max height */
+}
+
 #cartSummary th, #cartSummary td {
     padding: 10px; /* Aumenta o padding das células */
     border: 1px solid #ddd;

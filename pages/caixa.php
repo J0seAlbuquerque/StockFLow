@@ -81,20 +81,22 @@ $nomeEmpresa = $_SESSION['nomeEmpresa'];
         <div class="cart-wrapper">
             <h2>Carrinho de Compras</h2>
             <section id="cart-section">
-                <table id="cartSummary">
-                    <thead>
-                        <tr>
-                            <th>Produto</th>
-                            <th>Qtd</th>
-                            <th>Uni</th>
-                            <th>Total</th>
-                            <th>Editar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Itens do carrinho serão exibidos aqui -->
-                    </tbody>
-                </table>
+                <div class="cart-table-container">
+                    <table id="cartSummary">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Qtd</th>
+                                <th>Uni</th>
+                                <th>Total</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Itens do carrinho serão exibidos aqui -->
+                        </tbody>
+                    </table>
+                </div>
                 <div id="totalAmount">Total: R$ 0,00</div>
                 <button id="proceedToPayment">Prosseguir para Pagamento</button>
             </section>
