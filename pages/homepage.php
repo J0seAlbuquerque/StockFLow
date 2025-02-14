@@ -12,8 +12,8 @@ $user_id = $_SESSION['user_id'];
 $nomeEmpresa = $_SESSION['nomeEmpresa']; // Define the $nomeEmpresa variable
 $customer_name = $_SESSION['name']; // Define the $customer_name variable
 
-// Fetch the latest 3 sales
-$query_sales = "SELECT sale_id, customer_name, sale_date, total_amount FROM sales WHERE user_id = ? ORDER BY sale_date DESC LIMIT 3";
+// Fetch the latest 5 sales
+$query_sales = "SELECT sale_id, customer_name, sale_date, total_amount FROM sales WHERE user_id = ? ORDER BY sale_date DESC LIMIT 5";
 $stmt_sales = $conn->prepare($query_sales);
 $stmt_sales->bind_param("i", $user_id);
 $stmt_sales->execute();
@@ -74,7 +74,7 @@ $low_stock_products = $result_products->fetch_all(MYSQLI_ASSOC);
     </div>
     <div class="dashboard">
         <section class="latest-sales">
-            <h2>Últimas 3 Vendas</h2>
+            <h2>Últimas 5 Vendas</h2>
             <table>
                 <thead>
                     <tr>
@@ -95,7 +95,7 @@ $low_stock_products = $result_products->fetch_all(MYSQLI_ASSOC);
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <a href="./vendas.php">Ver Vendas</a>
+            <a id="link" href="./vendas.php">Ver Vendas</a>
         </section>
         <section class="low-stock-products">
             <h2>Produtos com Menor Quantidade em Estoque</h2>

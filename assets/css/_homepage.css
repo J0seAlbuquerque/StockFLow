@@ -124,6 +124,25 @@ body {
     opacity: 1; /* Torna o dropdown visível com transição suave */
 }
 
+/*Centralizar link e descer ao meio*/
+#link {
+    color: #f1f1f1; /* White Smoke */
+    text-decoration: none;
+    padding: 10px 15px; /* Adiciona preenchimento para bordas */
+    font-size: 1.1rem;
+    margin-top: 20px; /* Aumenta a margem superior para descer o link */
+    margin-left: 50%;
+    border: 2px solid #f1f1f1; /* Adiciona borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    display: inline-block; /* Garante que o link seja tratado como bloco inline */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para cor de fundo e texto */
+}
+
+#link:hover {
+    background-color: #1abc9c; /* Turquoise */
+    color: #fff; /* Branco */
+}
+
 /* Estilos para dispositivos menores (responsividade) */
 @media (max-width: 768px) {
     .navbar {
