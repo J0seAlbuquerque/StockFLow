@@ -40,11 +40,23 @@ document.addEventListener("DOMContentLoaded", function () {
         updateInstallmentValue();
     });
 
-    creditCardInstallments.addEventListener("change", updateInstallmentValue);
+    creditCardInstallments.addEventListener("change", function() {
+        updateInstallmentValue();
+    });
 
     function updateInstallmentValue(total = null) {
-        const totalAmount = total || parseFloat(document.getElementById('totalAmountModal').textContent.replace('Total: R$ ', '').replace(',', '.'));
+        const totalAmountText = document.getElementById('totalAmountModal').textContent.replace('Total: R$ ', '').replace(',', '.');
+        const totalAmount = total || parseFloat(totalAmountText);
         const installments = parseInt(creditCardInstallments.value);
+
+        console.log('Total Amount:', totalAmount); // Log para depuração
+        console.log('Installments:', installments); // Log para depuração
+
+        if (isNaN(totalAmount) || isNaN(installments) || installments <= 0) {
+            installmentValueDisplay.textContent = `Valor da Parcela: R$ 0,00`;
+            return;
+        }
+
         const installmentValue = totalAmount / installments;
         installmentValueDisplay.textContent = `Valor da Parcela: R$ ${installmentValue.toFixed(2).replace('.', ',')}`;
     }

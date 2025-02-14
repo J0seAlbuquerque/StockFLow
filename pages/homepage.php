@@ -95,6 +95,7 @@ $low_stock_products = $result_products->fetch_all(MYSQLI_ASSOC);
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <a href="./vendas.php">Ver Vendas</a>
         </section>
         <section class="low-stock-products">
             <h2>Produtos com Menor Quantidade em Estoque</h2>
