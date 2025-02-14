@@ -110,6 +110,7 @@ $nomeEmpresa = $_SESSION['nomeEmpresa']; // Define the $nomeEmpresa variable
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="receiptContent"></div>
+            <button id="printReceipt" onclick="printReceipt()">Imprimir Recibo</button>
         </div>
     </div>
 

@@ -35,6 +35,16 @@ function showReceipt(saleId) {
         .catch(error => console.error('Erro ao carregar o recibo:', error));
 }
 
+function printReceipt() {
+    var receiptContent = document.getElementById('receiptContent').innerHTML;
+    var originalContent = document.body.innerHTML;
+
+    document.body.innerHTML = receiptContent;
+    window.print();
+    document.body.innerHTML = originalContent;
+    location.reload(); // Reload the page to restore the original content
+}
+
 // Fecha o modal quando o usuário clica no botão de fechar
 document.querySelector('.close').addEventListener('click', function() {
     document.getElementById('receiptModal').style.display = 'none';
